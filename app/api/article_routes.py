@@ -49,7 +49,13 @@ def edit_article():
 
   data = request.get_json(force=True)
 
-  article.title = data
+  article.title = data.title
+  article.image = data.image
+  article.content = data.content
+  article.category = data.category
 
+  db.session.commit()
+
+  return article.to_dict()
 
 # delete one article
