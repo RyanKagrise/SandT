@@ -39,10 +39,10 @@ class Article(db.Model):
     __tablename__ = "articles"
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullabe=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     title = db.Column(db.String(40), nullable=False, unique=True)
-    img = db.Column(db.String, nullabe=False)
-    content = db.Column(db.String, nullabe=False)
+    image = db.Column(db.String, nullable=False)
+    content = db.Column(db.String, nullable=False)
     category = db.Column(db.String(20))
     created_at = db.Column(DateTime(timezone=True), server_default=func.now())
 
