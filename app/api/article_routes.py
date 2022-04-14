@@ -15,7 +15,7 @@ def get_all_articles():
 
 # get one article
 @article_routes.route('/<int:article_id>')
-def get_one_article():
+def get_one_article(article_id):
 
   article = Article.query.filter(Article.id == article_id).one()
 
@@ -43,7 +43,7 @@ def create_article():
 
 # edit one article
 @article_routes.route('/<int:article_id>', methods=['PUT'])
-def edit_article():
+def edit_article(article_id):
 
   article = Article.query.get(article_id)
 
