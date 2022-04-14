@@ -54,6 +54,8 @@ def edit_article():
   article.content = data.content
   article.category = data.category
 
+# print the edited data
+
   db.session.commit()
 
   return article.to_dict()

@@ -55,7 +55,7 @@ class Article(db.Model):
             'id': self.id,
             'user_id': self.user_id,
             'title': self.title,
-            'img': self.img,
+            'image': self.image,
             'content': self.content,
             'category': self.category,
             'created_at': self.created_at,
