@@ -14,5 +14,5 @@ class ArticleForm(FlaskForm):
   title = StringField('title', validators=[DataRequired(), Length(min=0, max=40)])
   image = StringField('image', validators=[DataRequired(), check_image])
   content = TextAreaField('content', validators=[DataRequired()])
-  category = SelectField('category', validators=[DataRequired()])
+  category = SelectField('category', choices=["Open Water", "Advanced","Rescue", "Master", "Gear"], validators=[DataRequired()])
   submit = SubmitField('submit')

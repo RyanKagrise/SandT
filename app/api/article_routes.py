@@ -14,6 +14,7 @@ def error_handling(validation_errors):
       errors.append(f'{field} : {error}')
   return errors
 
+
 # get all articles
 @article_routes.route('/')
 def get_all_articles():
@@ -21,6 +22,7 @@ def get_all_articles():
   articles = Article.query.all()
 
   return { "articles": [article.to_dict() for article in articles]}
+
 
 # get one article
 @article_routes.route('/<int:article_id>')
@@ -30,43 +32,69 @@ def get_one_article(article_id):
 
   return article.to_dict()
 
+
 # create one article
 @article_routes.route('/', methods=['POST'])
+# @login_required
 def create_article():
 
-  data = request.get_json(force=True)
+  form = ArticleForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
 
-  article = Article(
-    user_id=current_user.id,
-    title=data["title"],
-    image=data["image"],
-    content=data["content"],
-    category=data["category"]
-  )
+  if form.validate_on_submit():
+    article = Article(
+      user_id=current_user.id,
+      title=form.data["title"],
+      image=form.data["image"],
+      content=form.data["content"],
+      category=form.data["category"]
+    )
 
-  db.session.add(article)
-  db.session.flush()
-  db.session.commit()
+    db.session.add(article)
+    db.session.flush()
+    db.session.commit()
 
-  return article.to_dict()
+    return article.to_dict()
+
+  return {'errors': error_handling(form.errors)}, 400
+
 
 # edit one article
 @article_routes.route('/<int:article_id>', methods=['PUT'])
+# @login_required
 def edit_article(article_id):
+
+  form = ArticleForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+
+  article_id = request.json['id']
+  article = Article.query.get(article_id)
+
+  if form.validate_on_submit() and article.user_id == current_user.id:
+    article.title=form.data["title"],
+    article.image=form.data["image"],
+    article.content=form.data["content"],
+    article.category=form.data["category"]
+
+    db.session.add(article)
+    db.session.flush()
+    db.session.commit()
+
+    return article.to_dict()
+
+  return {'errors': error_handling(form.errors)}, 400
+
+
+# delete one article
+@article_routes.route('/<int:article_id>/delete', methods=['DELETE'])
+# @login_required
+def delete_article(article_id):
 
   article = Article.query.get(article_id)
 
-  data = request.get_json(force=True)
-
-  article.title = data.title
-  article.image = data.image
-  article.content = data.content
-  article.category = data.category
-
-# print the edited data
-
-  db.session.commit()
-
-  return article.to_dict()
-
-# delete one article
+  if article.user_id == current_user.id:
+    db.session.delete(article)
+    db.session.commit()
+    return article.to_dict()
+  else:
+    return {'Error': 'Invalid Request'}, 401
