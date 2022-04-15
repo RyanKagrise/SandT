@@ -11,8 +11,8 @@ const Articles = () => {
   //const sessionUser = useSelector((state) => state.session.user);
 
   const articlesArray = Object.values(articles);
-  console.log('articles-------------------->', articles)
-  console.log('articlesArray-------------------->', articlesArray)
+  // console.log('articles-------------------->', articles)
+  // console.log('articlesArray-------------------->', articlesArray)
 
 
   useEffect(() => {
@@ -35,9 +35,9 @@ const Articles = () => {
                 <h3 className=''>{article?.title}</h3>
                 {article ? <img className='' src={article?.image} alt='' /> : null}
                 {/* <p className=''>Date: {article?.image}</p> */}
-                <p className=''>Description: {article?.content}</p>
-                <p className=''>Capacity: {article?.category}</p>
-                <p className=''>Capacity: {article?.created_at}</p>
+                <p className=''>{article?.content}</p>
+                <p className=''>Category: {article?.category}</p>
+                <p className=''>Created At: {article?.created_at}</p>
                 {/* <div> Categories:
                   {article?.Categories?.map((category) => (
                   <p key={category?.id}>
