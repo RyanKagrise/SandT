@@ -10,7 +10,8 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import ArticleList from './components/ArticleList'
 import ArticlePage from './components/ArticlePage';
-import LandingPage from './components/LandingPage'
+import LandingPage from './components/LandingPage';
+import EditArticle from './components/EditArticle';
 
 
 function App() {
@@ -54,9 +55,12 @@ function App() {
         <ProtectedRoute path='/articles/:id' exact={true} >
           <ArticlePage />
         </ProtectedRoute>
+        <ProtectedRoute path='/articles/:id/edit' exact={true} >
+          <EditArticle />
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
 }
-
+ 
 export default App;
