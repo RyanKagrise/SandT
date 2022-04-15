@@ -33,7 +33,8 @@ const Articles = () => {
                 style={{ textDecoration: "none", padding: 25, marginTop: 0 }}
               >
                 <h3 className=''>{article?.title}</h3>
-                <p className=''>Date: {article?.image}</p>
+                {article ? <img className='' src={article?.image} alt='' /> : null}
+                {/* <p className=''>Date: {article?.image}</p> */}
                 <p className=''>Description: {article?.content}</p>
                 <p className=''>Capacity: {article?.category}</p>
                 <p className=''>Capacity: {article?.created_at}</p>
