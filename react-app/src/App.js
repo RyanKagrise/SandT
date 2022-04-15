@@ -8,8 +8,9 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-import Articles from './components/Articles'
+import ArticleList from './components/ArticleList'
 import ArticlePage from './components/ArticlePage';
+import LandingPage from './components/LandingPage'
 
 
 function App() {
@@ -44,10 +45,11 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <h1>Welcome to the landing page!</h1>
+          {/* <LandingPage /> */}
         </ProtectedRoute>
         <ProtectedRoute path='/articles' exact={true} >
-          <Articles />
+          <ArticleList />
         </ProtectedRoute>
         <ProtectedRoute path='/articles/:id' exact={true} >
           <ArticlePage />
