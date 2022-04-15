@@ -1,9 +1,18 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from ..models import db, User, Article, Comment
+from app.forms import ArticleForm
 from random import randint
 
 article_routes = Blueprint('articles', __name__)
+
+def error_handling(validation_errors):
+  errors = []
+
+  for field in validation_errors:
+    for error in validation_errors[field]:
+      errors.append(f'{field} : {error}')
+  return errors
 
 # get all articles
 @article_routes.route('/')

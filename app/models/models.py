@@ -39,11 +39,11 @@ class Article(db.Model):
     __tablename__ = "articles"
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     title = db.Column(db.String(40), nullable=False, unique=True)
     image = db.Column(db.String, nullable=False)
     content = db.Column(db.String, nullable=False)
-    category = db.Column(db.String(20))
+    category = db.Column(db.String, nullable=False)
     created_at = db.Column(DateTime(timezone=True), server_default=func.now())
 
     #relationships
@@ -66,8 +66,8 @@ class Comment(db.Model):
     __tablename__ = "comments"
 
     id = db.Column(db.Integer, primary_key=True)
-    article_id = db.Column(db.Integer, db.ForeignKey("articles.id"))
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    article_id = db.Column(db.Integer, db.ForeignKey("articles.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     content = db.Column(db.String(255), nullable=False)
     created_at = db.Column(DateTime(timezone=True), server_default=func.now())
 
