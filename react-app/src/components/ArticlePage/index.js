@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { fetchArticle } from '../../store/article'
-import { Redirect, useHistory } from 'react-router-dom'
+import { Redirect, useHistory, NavLink } from 'react-router-dom'
 import { removeArticle } from '../../store/article'
 
 
@@ -56,6 +56,9 @@ const ArticlePage = () => {
             <p className=''>Created At: {article?.created_at}</p>
           </div>
         </div>
+        <NavLink className='standard-link' exact to={`/articles/${article?.id}/edit`}>
+            Edit Article
+        </NavLink>
       </>
     )
   // // } else {
