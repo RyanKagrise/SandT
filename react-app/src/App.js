@@ -9,6 +9,9 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import Articles from './components/Articles'
+import ArticlePage from './components/ArticlePage';
+
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -45,6 +48,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/articles' exact={true} >
           <Articles />
+        </ProtectedRoute>
+        <ProtectedRoute path='/articles/:id' exact={true} >
+          <ArticlePage />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
