@@ -1,9 +1,18 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from ..models import db, User, Article, Comment
+from app.forms import ArticleForm
 from random import randint
 
 article_routes = Blueprint('articles', __name__)
+
+def error_handling(validation_errors):
+  errors = []
+
+  for field in validation_errors:
+    for error in validation_errors[field]:
+      errors.append(f'{field} : {error}')
+  return errors
 
 # get all articles
 @article_routes.route('/')
@@ -15,7 +24,7 @@ def get_all_articles():
 
 # get one article
 @article_routes.route('/<int:article_id>')
-def get_one_article():
+def get_one_article(article_id):
 
   article = Article.query.filter(Article.id == article_id).one()
 
@@ -43,7 +52,7 @@ def create_article():
 
 # edit one article
 @article_routes.route('/<int:article_id>', methods=['PUT'])
-def edit_article():
+def edit_article(article_id):
 
   article = Article.query.get(article_id)
 
@@ -53,6 +62,8 @@ def edit_article():
   article.image = data.image
   article.content = data.content
   article.category = data.category
+
+# print the edited data
 
   db.session.commit()
 
