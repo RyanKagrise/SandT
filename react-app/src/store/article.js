@@ -118,7 +118,7 @@ export const updateArticle = (article) => async dispatch => {
 };
 
 export const removeArticle = (article) => async dispatch => {
-  const res = await fetch(`/api/articles/${article.id}`, {
+  const res = await fetch(`/api/articles/${article.id}/delete`, {
     method: 'delete'
   });
   if (res.ok) {
