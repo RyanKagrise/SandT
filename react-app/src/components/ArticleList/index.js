@@ -21,23 +21,23 @@ const ArticleList = () => {
 
   return (
     <>
-      <div className='Container'>
-        <p className=''> Instructional Articles Home Page </p>
+      <div className=''>
+        <p className='PageTitle'> Instructional Articles Home Page </p>
         <div className=''>
-          <ul>
+          <ul className='Container'>
             {articlesArray.map((article) => (
               <NavLink
                 to={`/articles/${article.id}`}
                 key={article.id}
-                className='articleCard'
-                style={{ textDecoration: "none", padding: 25, marginTop: 0 }}
+                className=''
+                style={{ textDecoration: "none", padding: 10, marginTop: 0 }}
               >
                 <h3 className=''>{article?.title}</h3>
-                {article ? <img className='' src={article?.image} alt='' /> : null}
+                {article ? <img className='articleImage' src={article?.image} alt='' /> : null}
                 {/* <p className=''>Date: {article?.image}</p> */}
-                <p className=''>{article?.content}</p>
-                <p className=''>Category: {article?.category}</p>
-                <p className=''>Created At: {article?.created_at}</p>
+                {/* <div className=''>{article?.content}</div> */}
+                <div className=''>Category: {article?.category}</div>
+                <div className=''>Created At: {article?.created_at}</div>
                 {/* <div> Categories:
                   {article?.Categories?.map((category) => (
                   <p key={category?.id}>
