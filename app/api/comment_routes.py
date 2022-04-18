@@ -19,8 +19,8 @@ def get_all_comments():
 def get_one_comment(comment_id):
 
   comment = Comment.query.filter(Comment.id == comment_id).one()
-
-  return article.to_dict()
+  print('comment------------------>', comment)
+  return comment.to_dict()
 
 
 # edit one comment
@@ -29,7 +29,7 @@ def edit_comment(comment_id):
   data = request.get_json(force=True)
   comment = Comment.query.get(comment_id)
   if 'content' in data.keys():
-      message.content = data['content']
+      comment.content = data['content']
 
   db.session.commit()
 
@@ -39,15 +39,11 @@ def edit_comment(comment_id):
 # delete one comment
 @comment_routes.route('<int:comment_id>', methods=['DELETE'])
 def delete_comment(comment_id):
-  comment = Comment.query.filter(Comment.id == comment_id).first()
 
-  if comment.user_id == current_user.id:
+  comment = Comment.query.filter(Comment.id == comment_id).one()
 
-    db.session.delete(comment)
-    db.session.commit()
 
-    return article.to_dict()
+  db.session.delete(comment)
+  db.session.commit()
 
-  else:
-
-    return {'Error': 'Invalid Request'}, 401
+  return comment.to_dict()

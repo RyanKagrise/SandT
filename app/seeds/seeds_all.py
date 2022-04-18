@@ -46,6 +46,69 @@ def seed_all():
        user_id=2, title='Dive Buddy Checklists', image='https://cjdfarvg8e-flywheel.netdna-ssl.com/wp-content/uploads/2020/03/scuba-diving-in-florida-768x512.jpeg', content='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Erat imperdiet sed euismod nisi porta lorem. Sem viverra aliquet eget sit amet tellus cras adipiscing enim. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin. Curabitur vitae nunc sed velit dignissim sodales ut. Ipsum dolor sit amet consectetur adipiscing elit duis tristique. Enim tortor at auctor urna nunc id cursus. Scelerisque viverra mauris in aliquam sem fringilla ut morbi. Consequat interdum varius sit amet mattis vulputate enim nulla. Arcu felis bibendum ut tristique et egestas quis. Metus vulputate eu scelerisque felis imperdiet proin. Ornare aenean euismod elementum nisi quis eleifend quam adipiscing vitae. Urna nunc id cursus metus aliquam. Tellus orci ac auctor augue mauris. Donec et odio pellentesque diam. Lorem ipsum dolor sit amet consectetur adipiscing elit.', category='Master')
 
 
+    #comment seeds
+
+    comment1 = Comment(
+       article_id=1, user_id=1, content='This was really helpful!')
+
+    comment2 = Comment(
+       article_id=1, user_id=2, content='Great advice for folks who are new!')
+
+    comment3 = Comment(
+       article_id=1, user_id=1, content='Definitely! I learned a lot from this!')
+
+    comment4 = Comment(
+       article_id=2, user_id=1, content='We dive from the shore a lot and this will be our new go to strategy!')
+
+    comment5 = Comment(
+       article_id=2, user_id=3, content='I would agree with the author! Great tips guys!')
+
+    comment6 = Comment(
+       article_id=2, user_id=2, content='')
+
+    comment7 = Comment(
+       article_id=3, user_id=1, content='')
+
+    comment8 = Comment(
+       article_id=3, user_id=2, content='')
+
+    comment9 = Comment(
+       article_id=3, user_id=3, content='')
+
+    comment10 = Comment(
+       article_id=4, user_id=3, content='')
+
+    comment11 = Comment(
+       article_id=4, user_id=2, content='')
+
+    comment12 = Comment(
+       article_id=4, user_id=1, content='')
+
+    comment13 = Comment(
+       article_id=4, user_id= 2, content='')
+
+    comment14 = Comment(
+       article_id=5, user_id=2, content='')
+
+    comment15 = Comment(
+       article_id=5, user_id=1, content='')
+
+    comment16 = Comment(
+       article_id=5, user_id=3, content='')
+
+    comment17 = Comment(
+       article_id=6, user_id=1, content='')
+
+    comment18 = Comment(
+       article_id=6, user_id=2, content='')
+
+    comment19 = Comment(
+       article_id=7, user_id=3, content='')
+
+    comment20 = Comment(
+       article_id=8, user_id=1, content='')
+
+
     # users add/commit
 
     db.session.add(demo)
@@ -67,10 +130,33 @@ def seed_all():
     db.session.add(article8)
     db.session.add(article9)
 
+    db.session.commit()
     # db.session.add(article10)
     # db.session.add(article11)
     # db.session.add(article12)
 
+
+   # comments add/commit
+    db.session.add(comment1)
+    db.session.add(comment2)
+    db.session.add(comment3)
+    db.session.add(comment4)
+    db.session.add(comment5)
+    db.session.add(comment6)
+    db.session.add(comment7)
+    db.session.add(comment8)
+    db.session.add(comment9)
+    db.session.add(comment10)
+    db.session.add(comment11)
+    db.session.add(comment12)
+    db.session.add(comment13)
+    db.session.add(comment14)
+    db.session.add(comment15)
+    db.session.add(comment16)
+    db.session.add(comment17)
+    db.session.add(comment18)
+    db.session.add(comment19)
+    db.session.add(comment20)
 
     db.session.commit()
 
