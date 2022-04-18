@@ -18,6 +18,11 @@ const NavBar = () => {
           </NavLink>
         </div>
         <div>
+          <NavLink className='' exact to={`/articles/create`}>
+            Create Article
+          </NavLink>
+        </div>
+        <div>
           <NavLink to='/login' exact={true} activeClassName='active'>
             Login
           </NavLink>

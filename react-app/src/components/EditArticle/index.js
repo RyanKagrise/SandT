@@ -23,7 +23,7 @@ const EditArticle = () => {
 
   useEffect(() => {
     const validationErrors = [];
-    if (title.length > 50)
+    if (title.length > 40)
       return validationErrors.push(
         'Please limit titles to less than 40 characters!'
       );

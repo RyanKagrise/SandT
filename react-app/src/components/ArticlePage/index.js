@@ -44,7 +44,7 @@ const ArticlePage = () => {
   // }
 
 
-  if (sessionUser) {
+  if (sessionUser.id == article.user_id) {
     return (
       <>
         <div className=''>

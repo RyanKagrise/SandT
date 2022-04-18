@@ -2,7 +2,7 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 from ..models import db, User, Article, Comment
 from app.forms import ArticleForm
-from random import randint
+# from random import randint
 
 article_routes = Blueprint('articles', __name__)
 
@@ -98,3 +98,21 @@ def delete_article(article_id):
     return article.to_dict()
   else:
     return {'Error': 'Invalid Request'}, 401
+
+
+# create one comment
+@article_routes.route('/<int:article_id>', methods=['POST'])
+def create_comment(article_id):
+  data = request.get_json(force=True)
+
+  comment = Comment(
+      article_id=article_id,
+      user_id=current_user.id,
+      content=data["content"]
+  )
+
+  db.session.add(comment)
+  db.session.flush()
+  db.session.commit()
+
+  return comment.to_dict();

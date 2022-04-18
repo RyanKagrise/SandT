@@ -1,0 +1,20 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.articleCard {
+  border: 2px solid black;
+}
+
+
+.articleImage {
+  max-width: 300px;
+}
+
+.PageTitle {
+  text-align: center;
+}

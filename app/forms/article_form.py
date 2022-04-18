@@ -6,7 +6,7 @@ from wtforms.validators import DataRequired, Length, ValidationError
 
 def check_image(form, field):
   url = field.data
-  if url and not (url.endswith('.jpg') or url.endswith('.jpeg') or url.endswith('.png') or url.endswith('.gif')):
+  if url and (url.endswith('.jpg') or url.endswith('.jpeg') or url.endswith('.png') or url.endswith('.gif')):
     raise ValidationError('This image is not in the appropriate format! Please submit either a .jpg, .jpeg, .png, or .gif file!')
 
 
