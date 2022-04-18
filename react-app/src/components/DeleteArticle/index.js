@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { fetchArticle } from '../../store/article'
+import { fetchArticle, fetchArticles } from '../../store/article'
 import { useHistory } from 'react-router-dom'
 import { removeArticle } from '../../store/article'
 import './DeleteArticle.css'
@@ -22,12 +22,13 @@ const DeleteArticle = () => {
       userId: sessionUser.id,
       id: articleId
     }
-    let destroyedArticle;
-    destroyedArticle = await dispatch(removeArticle(payload))
-      .catch(error => (console.log('error in delete')))
 
-    if (destroyedArticle) {
-      history.push('/articles');
+    let destroyedArticle;
+
+    try{
+      destroyedArticle = await dispatch(removeArticle(payload)).then(() => dispatch(fetchArticles())).then(() => history.push('/'));
+    } catch (error) {
+     console.log('error in delete')
     }
   }
 
