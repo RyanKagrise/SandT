@@ -29,7 +29,7 @@ const ArticleList = () => {
               <NavLink
                 to={`/articles/${article.id}`}
                 key={article.id}
-                className=''
+                className='articleCard'
                 style={{ textDecoration: "none", padding: 25, marginTop: 0 }}
               >
                 <h3 className=''>{article?.title}</h3>
