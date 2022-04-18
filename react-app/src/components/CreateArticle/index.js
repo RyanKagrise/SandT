@@ -107,8 +107,8 @@ const CreateArticle = () => {
               type='submit'
               disabled={errors.length > 0}
               className='PLACEHOLDER'
-              >
-              Update Article
+            >
+              Create Article
             </button>
           </div>
         </form>
