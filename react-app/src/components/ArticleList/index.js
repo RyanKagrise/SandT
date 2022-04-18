@@ -21,7 +21,7 @@ const ArticleList = () => {
 
   return (
     <>
-      <div className=''>
+      <div className='Container'>
         <p className=''> Instructional Articles Home Page </p>
         <div className=''>
           <ul>

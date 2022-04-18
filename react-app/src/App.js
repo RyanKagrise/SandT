@@ -12,7 +12,7 @@ import ArticleList from './components/ArticleList'
 import ArticlePage from './components/ArticlePage';
 import LandingPage from './components/LandingPage';
 import EditArticle from './components/EditArticle';
-
+import CreateArticle from './components/CreateArticle'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -49,18 +49,21 @@ function App() {
           <h1>Welcome to the landing page!</h1>
           {/* <LandingPage /> */}
         </ProtectedRoute>
-        <ProtectedRoute path='/articles' exact={true} >
-          <ArticleList />
+        <ProtectedRoute path='/articles/create' exact={true} >
+          <CreateArticle />
+        </ProtectedRoute>
+        <ProtectedRoute path='/articles/:id/edit' exact={true} >
+          <EditArticle />
         </ProtectedRoute>
         <ProtectedRoute path='/articles/:id' exact={true} >
           <ArticlePage />
         </ProtectedRoute>
-        <ProtectedRoute path='/articles/:id/edit' exact={true} >
-          <EditArticle />
+        <ProtectedRoute path='/articles' exact={true} >
+          <ArticleList />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
 }
- 
+
 export default App;
