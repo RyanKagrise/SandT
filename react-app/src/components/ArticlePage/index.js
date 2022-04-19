@@ -14,6 +14,8 @@ const ArticlePage = () => {
   const dispatch = useDispatch();
   const articleParam = useParams();
 
+  const [loaded, setLoaded] = useState(false);
+
   const articleId = articleParam.id
 
   console.log('articleID-------------------->', articleId)
@@ -25,26 +27,15 @@ const ArticlePage = () => {
 
 
   useEffect(() => {
-    dispatch(fetchArticle(articleId));
+    dispatch(fetchArticle(article));
+    setLoaded(true);
   }, [dispatch]);
 
-  // const destroyArticleButton = async (e) => {
-  //   e.preventDefault();
-  //   const payload = {
-  //     userId: sessionUser.id,
-  //     id: articleId
-  //   }
-  //   let destroyedArticle;
-  //   destroyedArticle = await dispatch(removeArticle(payload))
-  //     .catch(error => (console.log('error in delete')))
+  if (!loaded) {
+    return null;
+  }
 
-  //   if (destroyedArticle) {
-  //     history.push('/articles');
-  //   }
-  // }
-
-
-  if (sessionUser.id == article.user_id) {
+  if (sessionUser.id) {
     return (
       <>
         <div className=''>
