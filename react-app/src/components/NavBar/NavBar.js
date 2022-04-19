@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import './NavBar.css'
+// import ProfileButton from './ProfileComponent';
 
 const NavBar = () => {
   return (
@@ -40,6 +41,7 @@ const NavBar = () => {
         <div>
           <LogoutButton />
         </div>
+        {/* <ProfileButton /> */}
       </div>
     </nav>
   );

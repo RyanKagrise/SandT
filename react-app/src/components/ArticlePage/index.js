@@ -28,23 +28,8 @@ const ArticlePage = () => {
     dispatch(fetchArticle(articleId));
   }, [dispatch]);
 
-  // const destroyArticleButton = async (e) => {
-  //   e.preventDefault();
-  //   const payload = {
-  //     userId: sessionUser.id,
-  //     id: articleId
-  //   }
-  //   let destroyedArticle;
-  //   destroyedArticle = await dispatch(removeArticle(payload))
-  //     .catch(error => (console.log('error in delete')))
 
-  //   if (destroyedArticle) {
-  //     history.push('/articles');
-  //   }
-  // }
-
-
-  if (sessionUser.id == article.user_id) {
+  if (sessionUser.id) {
     return (
       <>
         <div className=''>

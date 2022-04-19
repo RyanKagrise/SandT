@@ -46,8 +46,8 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <h1>Welcome to the landing page!</h1>
-          {/* <LandingPage /> */}
+          {/* <h1>Welcome to the landing page!</h1> */}
+          <LandingPage />
         </ProtectedRoute>
         <ProtectedRoute path='/articles/create' exact={true} >
           <CreateArticle />
