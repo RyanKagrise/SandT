@@ -43,15 +43,6 @@ const deleteArticle = id => {
   }
 }
 
-// //referenced in session.js store
-// export const deleteEvents = () => {
-//   return {
-//     type: DELETE_EVENTS
-//   }
-// }
-
-
-
 
 //thunk action creators
 export const fetchArticles = () => async dispatch => {

@@ -102,6 +102,14 @@ def delete_article(article_id):
 
 
 ### comments routes ##########################################
+@article_routes.route('/<int:article_id>/comments')
+def get_all_comments():
+
+  comments = Comment.query.filter()
+
+  return { "comments": [comment.to_dict() for comment in comments]}
+
+
 
 
 # create one comment
