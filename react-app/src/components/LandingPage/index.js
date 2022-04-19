@@ -1,17 +1,15 @@
-// import React from 'react'
+import React from 'react'
 
-// const LandingPage = ({ isLoaded }) => {
+const LandingPage = () => {
 
 
-//   if (isLoaded) {
-//     return (
-//       <>
-//         <p>Landing Page Component</p>
-//       </>
-//     )
-//   }
-// }
 
+    return (
+      <>
+        <p>Landing Page Component</p>
+      </>
+    )
+}
 
 
 
@@ -19,4 +17,6 @@
 
 
 
-// export default LandingPage;
+
+
+export default LandingPage;

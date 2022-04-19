@@ -14,8 +14,6 @@ const ArticlePage = () => {
   const dispatch = useDispatch();
   const articleParam = useParams();
 
-  const [loaded, setLoaded] = useState(false);
-
   const articleId = articleParam.id
 
   console.log('articleID-------------------->', articleId)
@@ -27,13 +25,9 @@ const ArticlePage = () => {
 
 
   useEffect(() => {
-    dispatch(fetchArticle(article));
-    setLoaded(true);
+    dispatch(fetchArticle(articleId));
   }, [dispatch]);
 
-  if (!loaded) {
-    return null;
-  }
 
   if (sessionUser.id) {
     return (

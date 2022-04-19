@@ -100,8 +100,12 @@ def delete_article(article_id):
     return {'Error': 'Invalid Request'}, 401
 
 
+
+### comments routes ##########################################
+
+
 # create one comment
-@article_routes.route('/<int:article_id>', methods=['POST'])
+@article_routes.route('/<int:article_id>/comments', methods=['POST'])
 def create_comment(article_id):
   data = request.get_json(force=True)
 

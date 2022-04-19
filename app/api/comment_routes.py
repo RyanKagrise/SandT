@@ -14,17 +14,17 @@ def get_all_comments():
   return { "comments": [comment.to_dict() for comment in comments]}
 
 
-# get one comment
-@comment_routes.route('/<int:comment_id>')
-def get_one_comment(comment_id):
+# # get one comment
+# @comment_routes.route('/<int:comment_id>')
+# def get_one_comment(comment_id):
 
-  comment = Comment.query.filter(Comment.id == comment_id).one()
-  print('comment------------------>', comment)
-  return comment.to_dict()
+#   comment = Comment.query.filter(Comment.id == comment_id).one()
+#   print('comment------------------>', comment)
+#   return comment.to_dict()
 
 
 # edit one comment
-@comment_routes.route('<int:comment_id>', methods=['PUT'])
+@comment_routes.route('/<int:comment_id>', methods=['PUT'])
 def edit_comment(comment_id):
   data = request.get_json(force=True)
   comment = Comment.query.get(comment_id)
@@ -37,7 +37,7 @@ def edit_comment(comment_id):
 
 
 # delete one comment
-@comment_routes.route('<int:comment_id>', methods=['DELETE'])
+@comment_routes.route('/<int:comment_id>', methods=['DELETE'])
 def delete_comment(comment_id):
 
   comment = Comment.query.filter(Comment.id == comment_id).one()
