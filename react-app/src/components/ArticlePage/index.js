@@ -25,17 +25,16 @@ const ArticlePage = () => {
 
 
 
-  useEffect( () => {
-   dispatch(fetchArticle(articleId));
-   dispatch(fetchComments());
+  useEffect(() => {
+    dispatch(fetchArticle(articleId));
   }, [dispatch]);
 
 
   if (sessionUser.id) {
     return (
-      <>
+      <div className='page-container'>
         <div className=''>
-          <div className=''>
+          <div className='article-container'>
             <h2 className=''>{article?.title}</h2>
             {article ? <img className='' src={article?.image} alt='' /> : null}
             <p className=''>{article?.content}</p>
@@ -47,7 +46,19 @@ const ArticlePage = () => {
           Edit Article
         </NavLink>
         <DeleteArticle />
-      </>
+        <div>
+        {article?.comments?.map((comment) => (
+              <div key={comment.id} className='comment'>
+                <div>
+                  {comment?.content}
+                </div>
+                <div>
+                  {comment?.user_id}
+                </div>
+              </div>
+            ))}
+        </div>
+      </div>
     )
   } else {
     return (
@@ -61,11 +72,19 @@ const ArticlePage = () => {
             <p className=''>Created At: {article?.created_at}</p>
           </div>
           <div>
-            {article[articleId]?.comments?.map((comment) => (
+            {article?.comments?.map((comment) => (
               <div key={comment.id}>
-                {comment?.content}
+                <div>
+                  {comment?.content}
+                </div>
+                <div>
+                  {comment?.user_id}
+                </div>
               </div>
             ))}
+          </div>
+          <div>
+
           </div>
         </div>
       </>
