@@ -6,12 +6,6 @@ from ..models import db, User, Article, Comment
 comment_routes = Blueprint('comments', __name__)
 
 # get all comments
-@comment_routes.route('/')
-def get_all_comments():
-
-  comments = Comment.query.all()
-
-  return { "comments": [comment.to_dict() for comment in comments]}
 
 
 # # get one comment

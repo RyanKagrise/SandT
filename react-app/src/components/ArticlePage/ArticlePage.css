@@ -1,0 +1,35 @@
+.comment {
+  margin: 10px;
+}
+
+.article-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vh;
+  margin-left: 150px;
+  margin-right: 150px;
+  padding: 20px;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.comment-box {
+  border: 1px solid black;
+  margin-top: 10px;
+}
+
+.edit-delete-buttons {
+  box-shadow: none;
+}
+
+.standard-link {
+  margin-right: 10px;
+}
