@@ -16,18 +16,16 @@ const ArticlePage = () => {
 
   const articleId = articleParam.id
 
-  console.log('articleID-------------------->', articleId)
-
   const sessionUser = useSelector((state) => state.session.user);
+  const comments = useSelector((state) => state.article.comments)
 
   const article = useSelector((state) => state.article[articleId]);
-  console.log('article--------------------->', article)
-
+  // console.log('WHAT IM LOOKING FORRRRRRRR------------>', article.comments.user_id)
   const editButton = () => {
     if(sessionUser.id == article?.comment?.user_id) {
       return (
         <>
-          
+          <button>Edit Comment</button>
         </>
       )
     }
@@ -65,6 +63,8 @@ const ArticlePage = () => {
                 <div>
                   {comment?.owner}
                 </div>
+
+                { editButton }
               </div>
             ))}
         </div>
