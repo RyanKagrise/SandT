@@ -20,3 +20,16 @@
   align-items: center;
   width: 100%;
 }
+
+.comment-box {
+  border: 1px solid black;
+  margin-top: 10px;
+}
+
+.edit-delete-buttons {
+  box-shadow: none;
+}
+
+.standard-link {
+  margin-right: 10px;
+}

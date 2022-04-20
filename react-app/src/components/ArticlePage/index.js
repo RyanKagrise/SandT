@@ -42,11 +42,13 @@ const ArticlePage = () => {
             <p className=''>Created At: {article?.created_at}</p>
           </div>
         </div>
-        <NavLink className='standard-link' exact to={`/articles/${article?.id}/edit`}>
-          Edit Article
-        </NavLink>
-        <DeleteArticle />
-        <div>
+        <div className='edit-delete-buttons'>
+          <NavLink className='standard-link' exact to={`/articles/${article?.id}/edit`}>
+            Edit Article
+          </NavLink>
+          <DeleteArticle />
+        </div>
+        <div className='comment-box'>
         {article?.comments?.map((comment) => (
               <div key={comment.id} className='comment'>
                 <div>
@@ -71,7 +73,7 @@ const ArticlePage = () => {
             <p className=''>Category: {article?.category}</p>
             <p className=''>Created At: {article?.created_at}</p>
           </div>
-          <div>
+          <div className='comment-box'>
             {article?.comments?.map((comment) => (
               <div key={comment.id}>
                 <div>
