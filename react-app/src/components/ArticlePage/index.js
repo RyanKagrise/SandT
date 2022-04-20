@@ -65,6 +65,36 @@ const ArticlePage = () => {
         <CreateComment />
       </div>
     )
+  } if (sessionUser) {
+    return (
+      <>
+        <div className='page-container'>
+          <div className='article-container'>
+            <h2 className=''>{article?.title}</h2>
+            {article ? <img className='' src={article?.image} alt='' /> : null}
+            <p className=''>{article?.content}</p>
+            <p className=''>Category: {article?.category}</p>
+            <p className=''>Created At: {article?.created_at}</p>
+          </div>
+          <div className='comment-box'>
+            {article?.comments?.map((comment) => (
+              <div key={comment.id}>
+                <div>
+                  {comment?.content}
+                </div>
+                <div>
+                  {comment?.owner}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div>
+
+          </div>
+          <CreateComment />
+        </div>
+      </>
+    )
   } else {
     return (
       <>
@@ -83,7 +113,7 @@ const ArticlePage = () => {
                   {comment?.content}
                 </div>
                 <div>
-                  {comment?.user_id}
+                  {comment?.owner}
                 </div>
               </div>
             ))}

@@ -10,7 +10,7 @@ const CreateComment = () => {
   let history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const comments = useSelector((state) => state.comments)
+  // const comments = useSelector((state) => state.comments)
   const articleParam = useParams();
 
   const article_id = parseInt(articleParam.id)
