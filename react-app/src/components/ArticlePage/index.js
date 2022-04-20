@@ -19,7 +19,7 @@ const ArticlePage = () => {
   const articleId = articleParam.id
 
   const sessionUser = useSelector((state) => state.session.user);
-  const comments = useSelector((state) => state.article.comments)
+  // const comments = useSelector((state) => state.article.comments)
 
   const article = useSelector((state) => state.article[articleId]);
   // console.log('WHAT IM LOOKING FORRRRRRRR------------>', article.comments.user_id)

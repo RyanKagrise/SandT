@@ -11,8 +11,8 @@ const CreateComment = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const articleParam = useParams();
 
-  const articleId = articleParam.id
-
+  const article_id = parseInt(articleParam.id)
+  // console.log('THIS RIGHT HEREEEEEEEEEEEE->>>>>', parseInt(articleId))
 
   const [content, setContent] = useState("");
   const [errors, setErrors] = useState([]);
@@ -31,7 +31,7 @@ const CreateComment = () => {
     e.preventDefault();
 
     const newComment = {
-      article_id: articleId,
+      // article_id: articleId,
       user_id: sessionUser.id,
       content,
     };
@@ -39,7 +39,7 @@ const CreateComment = () => {
     let createdComment;
 
     try {
-      createdComment = await dispatch(createNewComment(newComment));
+      createdComment = await dispatch(createNewComment(article_id, newComment)).then(() => history.push());
     } catch (error) {
       console.log(error)
     }

@@ -112,19 +112,19 @@ def get_all_comments(article_id):
 
 
 
-# create one comment
-@article_routes.route('/<int:article_id>/comments', methods=['POST'])
-def create_comment(article_id):
-  data = request.get_json(force=True)
+# # create one comment
+# @article_routes.route('/<int:article_id>/comments', methods=['POST'])
+# def create_comment(article_id):
+#   data = request.get_json(force=True)
 
-  comment = Comment(
-      article_id=article_id,
-      user_id=current_user.id,
-      content=data["content"]
-  )
+#   comment = Comment(
+#       article_id=article_id,
+#       user_id=current_user.id,
+#       content=data["content"]
+#   )
 
-  db.session.add(comment)
-  db.session.flush()
-  db.session.commit()
+#   db.session.add(comment)
+#   db.session.flush()
+#   db.session.commit()
 
-  return comment.to_dict();
+#   return comment.to_dict();
