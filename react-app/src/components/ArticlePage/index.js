@@ -23,7 +23,15 @@ const ArticlePage = () => {
   const article = useSelector((state) => state.article[articleId]);
   console.log('article--------------------->', article)
 
-
+  const editButton = () => {
+    if(sessionUser.id == article?.comment?.user_id) {
+      return (
+        <>
+          
+        </>
+      )
+    }
+  }
 
   useEffect(() => {
     dispatch(fetchArticle(articleId));
@@ -55,7 +63,7 @@ const ArticlePage = () => {
                   {comment?.content}
                 </div>
                 <div>
-                  {comment?.user_id}
+                  {comment?.owner}
                 </div>
               </div>
             ))}

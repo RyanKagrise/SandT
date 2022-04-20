@@ -82,4 +82,5 @@ class Comment(db.Model):
             'user_id': self.user_id,
             'content': self.content,
             'created_at': self.created_at,
+            'owner': self.owner.username,
         }
