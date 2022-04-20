@@ -22,7 +22,7 @@ const ArticlePage = () => {
   // const comments = useSelector((state) => state.article.comments)
 
   const article = useSelector((state) => state.article[articleId]);
-  // console.log('WHAT IM LOOKING FORRRRRRRR------------>', article.comments.user_id)
+  console.log('WHAT IM LOOKING FORRRRRRRR------------>', article)
 
   useEffect(() => {
     dispatch(fetchArticle(articleId));
@@ -32,7 +32,7 @@ const ArticlePage = () => {
 
 
 
-  if (sessionUser?.id) {
+  if (sessionUser?.id == article?.user_id) {
     return (
       <div className='page-container'>
         <div className=''>

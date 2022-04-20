@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { ErrorMessage } from '../utils/ErrorMessage'
-import { createNewComment } from '../../store/comment'
+import { createNewComment, fetchComments } from '../../store/comment'
 import * as sessionActions from '../../store/session';
 import './CreateComment.css'
 
@@ -10,6 +10,7 @@ const CreateComment = () => {
   let history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+  const comments = useSelector((state) => state.comments)
   const articleParam = useParams();
 
   const article_id = parseInt(articleParam.id)
@@ -26,7 +27,8 @@ const CreateComment = () => {
         "Please limit content to 255 characters or less!"
       );
     setErrors(validationErrors);
-  }, [content]);
+    dispatch(fetchComments());
+  }, [content, dispatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
