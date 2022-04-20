@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { fetchArticles } from '../../store/article';
+import Footer from '../Footer'
 import './LandingPage.css'
 
 
@@ -22,10 +23,10 @@ const LandingPage = () => {
 
   return (
     <>
-      <div>
+      <div className='height-adj'>
         <div className='site-title'> Welcome To Scuba & Travel!
         </div>
-        <p className='Landing-title'> Check out our newest articles! </p>
+        <p className='Landing-title'> Check out our newest training articles! </p>
         <div className='div-container'>
           <ul className='Landing-Container'>
             {articlesArray.slice(-4).map((article) => (
@@ -33,14 +34,14 @@ const LandingPage = () => {
                 to={`/articles/${article.id}`}
                 key={article.id}
                 className='Landing-link'
-                style={{ textDecoration: "none", padding: 10, marginTop: 0 }}
+                style={{ textDecoration: "none" }}
               >
                 <h3 className=''>{article?.title}</h3>
                 {article ? <img className='LandingImage' src={article?.image} alt='' /> : null}
                 {/* <p className=''>Date: {article?.image}</p> */}
                 {/* <div className=''>{article?.content}</div> */}
                 <div className=''>Category: {article?.category}</div>
-                <div className=''>Created At: {article?.created_at}</div>
+                {/* <div className=''>Created At: {article?.created_at}</div> */}
                 {/* <div> Categories:
                   {article?.Categories?.map((category) => (
                   <p key={category?.id}>
@@ -53,7 +54,8 @@ const LandingPage = () => {
           </ul>
         </div>
       </div>
-      <footer className='footer'>
+      <Footer />
+      {/* <footer className='footer'>
         <a href='https://github.com/RyanKagrise'>
           <img className='github' src='https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg' alt='' />
         </a>
@@ -63,7 +65,7 @@ const LandingPage = () => {
         <a href='https://www.linkedin.com/in/ryan-kagrise-27893551/'>
           <img className='github' src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Linkedin_icon.svg/640px-Linkedin_icon.svg.png' alt='' />
         </a>
-      </footer>
+      </footer> */}
     </>
   )
 }

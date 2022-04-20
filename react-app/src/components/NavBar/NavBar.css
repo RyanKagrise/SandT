@@ -11,6 +11,7 @@
 
 .active:visited {
   text-decoration: none;
+  color: white;
 }
 
 .active {
@@ -19,5 +20,10 @@
 }
 
 nav {
+  text-decoration: none;
+}
+
+.nav-text {
+  color: white;
   text-decoration: none;
 }

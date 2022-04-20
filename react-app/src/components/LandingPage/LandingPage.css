@@ -8,8 +8,8 @@
   border-radius: 10px;
   box-sizing: border-box;
   margin-top: 40px;
-  margin-left: 40%;
-  margin-right: 40%;
+  margin-left: 38%;
+  margin-right: 38%;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -18,7 +18,7 @@
 .Landing-Container {
   display: flex;
   justify-content: space-around;
-  height: 450px;
+  height: fit-content;
   border: 5px grey solid;
   overflow: scroll;
   text-align: center;
@@ -65,6 +65,7 @@
   margin-right: 30%;
   padding-top: 10px;
   padding-bottom: 10px;
+
 }
 
 .footer-text {
@@ -78,4 +79,11 @@
  height: 550px; */
  background-color: grey;
  border-radius: 10%;
+ transform: scale(1.05);
+}
+
+.Landing-link {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
 }

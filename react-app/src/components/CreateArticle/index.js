@@ -4,6 +4,7 @@ import { Redirect, useHistory, NavLink } from 'react-router-dom';
 import { ErrorMessage } from '../utils/ErrorMessage'
 import { createNewArticle } from '../../store/article'
 import * as sessionActions from '../../store/session';
+import Footer from '../Footer'
 import './CreateArticle.css'
 
 const CreateArticle = () => {
@@ -114,6 +115,7 @@ const CreateArticle = () => {
           </div>
         </form>
       </div>
+      <Footer />
     </>
   )
 };
