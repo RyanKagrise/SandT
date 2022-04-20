@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { ErrorMessage } from '../utils/ErrorMessage'
 import { createNewComment } from '../../store/comment'
 import * as sessionActions from '../../store/session';
 import './CreateComment.css'
 
 const CreateComment = () => {
-  const dispatch = useDispatch()
+  let history = useHistory();
+  const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const articleParam = useParams();
 
@@ -39,7 +40,7 @@ const CreateComment = () => {
     let createdComment;
 
     try {
-      createdComment = await dispatch(createNewComment(article_id, newComment)).then(() => history.push());
+      createdComment = await dispatch(createNewComment(article_id, newComment)).then(() => history.push(`/articles/${article_id}`));
     } catch (error) {
       console.log(error)
     }
