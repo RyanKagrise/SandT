@@ -22,7 +22,7 @@ const ArticleList = () => {
   return (
     <>
       <div className=''>
-        <p className='PageTitle'> Instructional Articles Home Page </p>
+        <p className='PageTitleArticlesList'> Check out our entire collections of articles below! </p>
         <div className=''>
           <ul className='Container'>
             {articlesArray.map((article) => (

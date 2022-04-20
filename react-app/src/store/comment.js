@@ -36,12 +36,12 @@ const deleteComment = id => {
 
 //thunk
 
-export const fetchComments = () => async dispatch => {
-  const res = await fetch(`/api/comments/`);
+export const fetchComments = (article_id) => async dispatch => {
+  const res = await fetch(`/api/articles/${article_id}/comments`);
 
   if (res.ok) {
     const comments = await res.json();
-    dispatch(getComments(comments.comments));
+    dispatch(getComments(article_id, comments.comments));
   }
 }
 

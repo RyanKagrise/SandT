@@ -33,6 +33,7 @@ const ArticlePage = () => {
 
   useEffect(() => {
     dispatch(fetchArticle(articleId));
+    dispatch(fetchComments(articleId));
   }, [dispatch]);
 
 

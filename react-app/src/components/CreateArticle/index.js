@@ -50,7 +50,7 @@ const CreateArticle = () => {
   return (
     <>
       <div className=''>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='form-container'>
           <ul>
             {errors.map((error, idx) => (
               <li className='validationErrors' key={idx}>{error}</li>
@@ -59,9 +59,9 @@ const CreateArticle = () => {
           <div>
             <ErrorMessage message={errorMessages.overall} />
           </div>
-          <div className=''>
-            <label className=''>
-              <div className=''>Title</div>
+          <div className='form-container'>
+            <label className='title'>
+              <div className='title-caption'>Title</div>
               <input
                 type='text'
                 placeholder='Title'
@@ -70,8 +70,8 @@ const CreateArticle = () => {
                 required
               />
             </label>
-            <label className=''>
-              <div className=''>Image</div>
+            <label className='image'>
+              <div className='title-caption'>Image</div>
               <input
                 type='text'
                 placeholder='Article Image URL'
@@ -81,17 +81,18 @@ const CreateArticle = () => {
               />
             </label>
             <label className=''>
-              <div className=''>Content</div>
+              <div className='title-caption'>Content</div>
               <textarea
                 type='text'
                 placeholder='Enter Article Content'
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 required
+                className='text-area'
               />
             </label>
-            <label className=''>
-              <div className=''>Category</div>
+            <label className='category'>
+              <div className='title-caption'>Category</div>
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
@@ -106,7 +107,7 @@ const CreateArticle = () => {
             <button
               type='submit'
               disabled={errors.length > 0}
-              className='PLACEHOLDER'
+              className='create-button'
             >
               Create Article
             </button>
