@@ -24,12 +24,12 @@ const ArticleList = () => {
       <div className=''>
         <p className='PageTitleArticlesList'> Check out our entire collections of articles below! </p>
         <div className=''>
-          <ul className='Container'>
+          <ul className='article-grid'>
             {articlesArray.map((article) => (
               <NavLink
                 to={`/articles/${article.id}`}
                 key={article.id}
-                className=''
+                className='Articles-link'
                 style={{ textDecoration: "none", padding: 10, marginTop: 0 }}
               >
                 <h3 className=''>{article?.title}</h3>

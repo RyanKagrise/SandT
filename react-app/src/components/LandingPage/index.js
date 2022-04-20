@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { fetchArticles } from '../../store/article';
 import './LandingPage.css'
 
+
 const LandingPage = () => {
   const dispatch = useDispatch();
 
@@ -21,7 +22,9 @@ const LandingPage = () => {
 
   return (
     <>
-      <div className=''>
+      <div>
+        <div className='site-title'> Welcome To Scuba & Travel!
+        </div>
         <p className='Landing-title'> Check out our newest articles! </p>
         <div className='div-container'>
           <ul className='Landing-Container'>
@@ -51,8 +54,15 @@ const LandingPage = () => {
         </div>
       </div>
       <footer className='footer'>
-        <a href='https://github.com/RyanKagrise'></a>
-        <a></a>
+        <a href='https://github.com/RyanKagrise'>
+          <img className='github' src='https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg' alt='' />
+        </a>
+        <div className='footer-text'>
+          Meet The Site's Creator!
+        </div>
+        <a href='https://www.linkedin.com/in/ryan-kagrise-27893551/'>
+          <img className='github' src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Linkedin_icon.svg/640px-Linkedin_icon.svg.png' alt='' />
+        </a>
       </footer>
     </>
   )

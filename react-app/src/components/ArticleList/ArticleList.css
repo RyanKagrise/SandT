@@ -28,4 +28,35 @@
     margin-right: 35%;
     padding-top: 10px;
     padding-bottom: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.Articles-link {
+  margin-bottom: 10px;
+}
+
+.Articles-link:hover {
+  /* width: 400px;
+  height: 550px; */
+  background-color: grey;
+  border-radius: 10%;
+  transform: scale(1.1);
+ }
+
+
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  text-align: center;
+  max-height: 550px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.articleImage {
+  height: 300px;
+  width: 300px;
+  object-fit: cover;
 }
