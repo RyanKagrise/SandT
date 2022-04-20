@@ -9,35 +9,35 @@ const NavBar = () => {
     <nav className='container'>
       <div className='nav-list'>
         <div>
-          <NavLink to='/' exact={true} activeClassName='active'>
+          <NavLink className='nav-text' to='/' exact={true} activeClassName='active'>
             Home
           </NavLink>
         </div>
         <div>
-          <NavLink to='/articles' exact={true} activeClassName='active'>
+          <NavLink className='nav-text' to='/articles' exact={true} activeClassName='active'>
             Articles
           </NavLink>
         </div>
         <div>
-          <NavLink className='' exact to={`/articles/create`}>
+          <NavLink className='nav-text' exact to={`/articles/create`}>
             Create Article
           </NavLink>
         </div>
         <div>
-          <NavLink to='/login' exact={true} activeClassName='active'>
+          <NavLink className='nav-text' to='/login' exact={true} activeClassName='active'>
             Login
           </NavLink>
         </div>
         <div>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
+          <NavLink className='nav-text' to='/sign-up' exact={true} activeClassName='active'>
             Sign Up
           </NavLink>
         </div>
-        <div>
+        {/* <div>
           <NavLink to='/users' exact={true} activeClassName='active'>
             Users
           </NavLink>
-        </div>
+        </div> */}
         <div>
           <LogoutButton />
         </div>

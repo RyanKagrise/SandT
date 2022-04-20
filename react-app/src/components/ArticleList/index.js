@@ -22,22 +22,22 @@ const ArticleList = () => {
   return (
     <>
       <div className=''>
-        <p className='PageTitle'> Instructional Articles Home Page </p>
+        <p className='PageTitleArticlesList'> Check out our entire collections of articles below! </p>
         <div className=''>
-          <ul className='Container'>
+          <ul className='article-grid'>
             {articlesArray.map((article) => (
               <NavLink
                 to={`/articles/${article.id}`}
                 key={article.id}
-                className=''
-                style={{ textDecoration: "none", padding: 10, marginTop: 0 }}
+                className='Articles-link'
+                style={{ textDecoration: "none" }}
               >
                 <h3 className=''>{article?.title}</h3>
                 {article ? <img className='articleImage' src={article?.image} alt='' /> : null}
                 {/* <p className=''>Date: {article?.image}</p> */}
                 {/* <div className=''>{article?.content}</div> */}
                 <div className=''>Category: {article?.category}</div>
-                <div className=''>Created At: {article?.created_at}</div>
+                {/* <div className=''>Created At: {article?.created_at}</div> */}
                 {/* <div> Categories:
                   {article?.Categories?.map((category) => (
                   <p key={category?.id}>
