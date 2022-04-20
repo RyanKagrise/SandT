@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useHistory, NavLink } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { ErrorMessage } from '../utils/ErrorMessage'
 import { createNewComment } from '../../store/comment'
 import * as sessionActions from '../../store/session';
 import './CreateComment.css'
 
-const createComment = () => {
-  let history = useHistory();
-  const dispatch = useDispatch();
+const CreateComment = () => {
+  const dispatch = useDispatch()
   const sessionUser = useSelector((state) => state.session.user);
+  const articleParam = useParams();
+
+  const articleId = articleParam.id
+
 
   const [content, setContent] = useState("");
   const [errors, setErrors] = useState([]);
@@ -22,18 +25,60 @@ const createComment = () => {
         "Please limit content to 255 characters or less!"
       );
     setErrors(validationErrors);
-  }, [title]);
+  }, [content]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const newComment = {
+      article_id: articleId,
+      user_id: sessionUser.id,
+      content,
+    };
 
-    let createdArticle;
+    let createdComment;
 
-    try{
-      createdArticle = await dispatch(createNewArticle(newArticle)).then(() => history.push('/articles'));
+    try {
+      createdComment = await dispatch(createNewComment(newComment));
     } catch (error) {
       console.log(error)
     }
   }
+
+  return (
+    <>
+      <form onSubmit={handleSubmit} className='form-container'>
+        <ul>
+          {errors.map((error, idx) => (
+            <li className='validationErrors' key={idx}>{error}</li>
+          ))}
+        </ul>
+        <div>
+          <ErrorMessage message={errorMessages.overall} />
+        </div>
+        <div className='form-container'>
+          <label className=''>
+            <div className='title-caption'>Add Comment Here!</div>
+            <textarea
+              type='text'
+              placeholder='Enter Comment Content'
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              required
+              className='text-area'
+            />
+          </label>
+          <button
+            type='submit'
+            disabled={errors.length > 0}
+            className='create-button'
+          >
+            Create Comment
+          </button>
+        </div>
+      </form>
+    </>
+  )
 }
+
+export default CreateComment;

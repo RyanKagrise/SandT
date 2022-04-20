@@ -45,22 +45,22 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
+        <Route path='/' exact={true} >
           {/* <h1>Welcome to the landing page!</h1> */}
           <LandingPage />
-        </ProtectedRoute>
+        </Route>
         <ProtectedRoute path='/articles/create' exact={true} >
           <CreateArticle />
         </ProtectedRoute>
         <ProtectedRoute path='/articles/:id/edit' exact={true} >
           <EditArticle />
         </ProtectedRoute>
-        <ProtectedRoute path='/articles/:id' exact={true} >
+        <Route path='/articles/:id' exact={true} >
           <ArticlePage />
-        </ProtectedRoute>
-        <ProtectedRoute path='/articles' exact={true} >
+        </Route>
+        <Route path='/articles' exact={true} >
           <ArticleList />
-        </ProtectedRoute>
+        </Route>
       </Switch>
     </BrowserRouter>
   );

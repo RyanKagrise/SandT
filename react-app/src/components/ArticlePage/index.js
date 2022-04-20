@@ -2,10 +2,12 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { fetchArticle } from '../../store/article'
-import { fetchComments } from '../../store/comment'
+import { fetchComments, createNewComment } from '../../store/comment'
 import { Redirect, useHistory, NavLink } from 'react-router-dom'
 import { removeArticle } from '../../store/article'
+import { ErrorMessage } from '../utils/ErrorMessage'
 import DeleteArticle from '../DeleteArticle'
+import CreateComment from '../CreateComment'
 import './ArticlePage.css'
 
 const ArticlePage = () => {
@@ -21,15 +23,6 @@ const ArticlePage = () => {
 
   const article = useSelector((state) => state.article[articleId]);
   // console.log('WHAT IM LOOKING FORRRRRRRR------------>', article.comments.user_id)
-  const editButton = () => {
-    if(sessionUser.id == article?.comment?.user_id) {
-      return (
-        <>
-          <button>Edit Comment</button>
-        </>
-      )
-    }
-  }
 
   useEffect(() => {
     dispatch(fetchArticle(articleId));
@@ -37,7 +30,9 @@ const ArticlePage = () => {
   }, [dispatch]);
 
 
-  if (sessionUser.id) {
+
+
+  if (sessionUser?.id) {
     return (
       <div className='page-container'>
         <div className=''>
@@ -64,18 +59,17 @@ const ArticlePage = () => {
                 <div>
                   {comment?.owner}
                 </div>
-
-                { editButton }
               </div>
             ))}
         </div>
+        <CreateComment />
       </div>
     )
   } else {
     return (
       <>
-        <div className=''>
-          <div className=''>
+        <div className='page-container'>
+          <div className='article-container'>
             <h2 className=''>{article?.title}</h2>
             {article ? <img className='' src={article?.image} alt='' /> : null}
             <p className=''>{article?.content}</p>
