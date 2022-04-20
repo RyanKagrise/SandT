@@ -22,7 +22,6 @@ const ArticlePage = () => {
   // const comments = useSelector((state) => state.article.comments)
 
   const article = useSelector((state) => state.article[articleId]);
-  console.log('WHAT IM LOOKING FORRRRRRRR------------>', article)
 
   useEffect(() => {
     dispatch(fetchArticle(articleId));

@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { ErrorMessage } from '../utils/ErrorMessage'
-import { createNewComment, fetchComments } from '../../store/comment'
+import { createNewComment} from '../../store/comment'
 import * as sessionActions from '../../store/session';
 import './CreateComment.css'
+import { fetchArticle } from '../../store/article';
 
 const CreateComment = () => {
   let history = useHistory();
@@ -27,14 +28,14 @@ const CreateComment = () => {
         "Please limit content to 255 characters or less!"
       );
     setErrors(validationErrors);
-    dispatch(fetchComments());
-  }, [content, dispatch]);
+    // dispatch(fetchArticle(article_id))
+  }, [content]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newComment = {
-      // article_id: articleId,
+      article_id: article_id,
       user_id: sessionUser.id,
       content,
     };
@@ -42,7 +43,8 @@ const CreateComment = () => {
     let createdComment;
 
     try {
-      createdComment = await dispatch(createNewComment(article_id, newComment)).then(() => history.push(`/articles/${article_id}`));
+      createdComment = await dispatch(createNewComment(article_id, newComment)).then(() => dispatch(fetchArticle(article_id))).then(() => setContent("")).then(() => history.push(`/articles/${article_id}`));
+      setContent("")
     } catch (error) {
       console.log(error)
     }
