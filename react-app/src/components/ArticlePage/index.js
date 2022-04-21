@@ -8,6 +8,7 @@ import { removeArticle } from '../../store/article'
 import { ErrorMessage } from '../utils/ErrorMessage'
 import DeleteArticle from '../DeleteArticle'
 import CreateComment from '../CreateComment'
+import EditComment from '../EditComment'
 import './ArticlePage.css'
 
 const ArticlePage = () => {
@@ -23,9 +24,9 @@ const ArticlePage = () => {
 
   const article = useSelector((state) => state.article[articleId]);
 
-  useEffect(() => {
-    dispatch(fetchArticle(articleId));
-    dispatch(fetchComments(articleId));
+  useEffect(async() => {
+    await dispatch(fetchArticle(articleId));
+    await dispatch(fetchComments(articleId));
   }, [dispatch]);
 
 
@@ -58,10 +59,13 @@ const ArticlePage = () => {
                 <div>
                   {comment?.owner}
                 </div>
+                <div>
+                </div>
               </div>
             ))}
         </div>
         <CreateComment />
+        <EditComment />
       </div>
     )
   } if (sessionUser) {

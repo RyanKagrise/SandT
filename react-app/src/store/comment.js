@@ -106,16 +106,14 @@ export const removeComment = (comment) => async dispatch => {
 
 
 //reducer
-const commentReducer = (state = {
-    allComments: {},
-}, action) => {
+const commentReducer = (state = {}, action) => {
   switch (action.types) {
     case GET_COMMENTS: {
-      const newAllComments = {};
+      const newState = {};
       action.comments.forEach((comment) => {
-        newAllComments[comment.id] = comment;
+        newState[comment.id] = comment;
       });
-      return {...state, allComments: newAllComments};
+      return newState;
     }
 
     case CREATE_COMMENT: {

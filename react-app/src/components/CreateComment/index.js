@@ -44,7 +44,7 @@ const CreateComment = () => {
 
     try {
       createdComment = await dispatch(createNewComment(article_id, newComment)).then(() => dispatch(fetchArticle(article_id))).then(() => setContent("")).then(() => history.push(`/articles/${article_id}`));
-      setContent("")
+      // setContent("")
     } catch (error) {
       console.log(error)
     }
