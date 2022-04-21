@@ -58,13 +58,12 @@ def edit_comment(comment_id):
 
 
 # delete one comment
-@comment_routes.route('/<int:comment_id>', methods=['DELETE'])
+@comment_routes.route('/<int:comment_id>/delete/', methods=['DELETE'])
 def delete_comment(comment_id):
 
-  comment = Comment.query.filter(Comment.id == comment_id).one()
-
-
+  comment = Comment.query.filter(Comment.id == comment_id).first()
+  res = {"id": id}
   db.session.delete(comment)
   db.session.commit()
 
-  return comment.to_dict()
+  return res

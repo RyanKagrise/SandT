@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { fetchArticle } from '../../store/article'
-import { fetchComments, createNewComment } from '../../store/comment'
+import { fetchComments, removeComment } from '../../store/comment'
 import { Redirect, useHistory, NavLink } from 'react-router-dom'
 import { removeArticle } from '../../store/article'
 import { ErrorMessage } from '../utils/ErrorMessage'
@@ -11,7 +11,7 @@ import CreateComment from '../CreateComment'
 import EditComment from '../EditComment'
 import './ArticlePage.css'
 
-const ArticlePage = () => {
+const ArticlePage = ({ comment }) => {
 
   let history = useHistory();
   const dispatch = useDispatch();
@@ -21,18 +21,50 @@ const ArticlePage = () => {
 
   const sessionUser = useSelector((state) => state.session.user);
   // const comments = useSelector((state) => state.article.comments)
+  console.log('SESSIONUSER---------------->', sessionUser)
 
   const article = useSelector((state) => state.article[articleId]);
+  console.log("ARTICLE ------------------>", article)
 
   useEffect(() => {
     dispatch(fetchArticle(articleId));
     dispatch(fetchComments(articleId));
   }, [dispatch]);
 
+  // const editComment = (comment)
 
+  const destroyComment = async (e, comment) => {
+    e.preventDefault();
 
+    const payload = {
+      id: comment.id,
+    }
 
-  if (sessionUser?.id == article?.user_id) {
+    let destroyedComment;
+    try {
+      console.log('payload ----------->', payload)
+      destroyedComment = await dispatch(removeComment(payload))
+      // .then(() => dispatch(fetchArticle(articleId))).then(() => history.push(`/articles/${articleId}`));
+    } catch (error) {
+      (console.log('error in delete'))
+    }
+  }
+
+  const deleteComment = (comment) => {
+    if (sessionUser?.id === comment?.user_id) {
+      return (
+        <button
+          type='submit'
+          onClick={(e) => destroyComment(e, comment)}
+          className='PLACEHOLDER'
+        >
+          delete comment
+        </button>
+      )
+    }
+  }
+
+  if (sessionUser?.id === article?.user_id) {
     return (
       <div className='page-container'>
         <div className=''>
@@ -51,18 +83,21 @@ const ArticlePage = () => {
           <DeleteArticle />
         </div>
         <div className='comment-box'>
-        {article?.comments?.map((comment) => (
-              <div key={comment.id} className='comment'>
-                <div>
-                  {comment?.content}
-                </div>
-                <div>
-                  {comment?.owner}
-                </div>
-                <div>
-                </div>
+          {article?.comments?.map((comment) => (
+            <div key={comment.id} className='comment'>
+              <div>
+                {comment?.content}
               </div>
-            ))}
+              <div>
+                {comment?.owner}
+              </div>
+              <div>
+              </div>
+              <div>
+                {deleteComment(comment)}
+              </div>
+            </div>
+          ))}
         </div>
         <CreateComment />
       </div>
@@ -86,6 +121,9 @@ const ArticlePage = () => {
                 </div>
                 <div>
                   {comment?.owner}
+                </div>
+                <div>
+                  {deleteComment(comment)}
                 </div>
               </div>
             ))}
