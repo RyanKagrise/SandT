@@ -26,7 +26,7 @@ const DeleteArticle = () => {
     let destroyedArticle;
 
     try{
-      destroyedArticle = await dispatch(removeArticle(payload)).then(() => dispatch(fetchArticles())).then(() => history.push('/'));
+      destroyedArticle = await dispatch(removeArticle(payload)).then(async() => await dispatch(fetchArticles())).then(() => history.push('/articles'));
     } catch (error) {
      console.log('error in delete')
     }

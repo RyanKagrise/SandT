@@ -55,7 +55,7 @@ export const createNewComment = (article_id, comment) => async dispatch => {
     body: JSON.stringify(comment)
   });
 
-  if(res.ok) {
+  if (res.ok) {
     const data = await res.json();
     dispatch(createComment(data));
   } else if (res.status < 500) {
@@ -92,13 +92,15 @@ export const updateComment = (comment) => async dispatch => {
 };
 
 export const removeComment = (comment) => async dispatch => {
-  const res = await fetch(`/api/comment/${comment.id}/delete`, {
-    method: 'delete'
+  const res = await fetch(`/api/comments/${comment.id}/delete/`, {
+    method: 'DELETE',
+    headers: {
+      "Content-Type": "application/json"
+    }
   });
+  console.log(res.ok)
   if (res.ok) {
-    const removedComment = await res.json();
-    await dispatch(deleteComment(removedComment))
-    return removedComment;
+    await dispatch(deleteComment(comment.id))
   }
   return false;
 }
@@ -117,7 +119,7 @@ const commentReducer = (state = {}, action) => {
     }
 
     case CREATE_COMMENT: {
-      const newState = {...state};
+      const newState = { ...state };
       newState[action.comment.id] = action.comment;
       return newState;
     }

@@ -110,12 +110,13 @@ export const updateArticle = (article) => async dispatch => {
 
 export const removeArticle = (article) => async dispatch => {
   const res = await fetch(`/api/articles/${article.id}/delete`, {
-    method: 'delete'
+    method: 'DELETE',
+    headers: {
+      "Content-Type": "application/json"
+    }
   });
   if (res.ok) {
-    const removedArticle = await res.json();
-    await dispatch(deleteArticle(removedArticle))
-    return removedArticle;
+    await dispatch(deleteArticle(article.id))
   }
   return false;
 }

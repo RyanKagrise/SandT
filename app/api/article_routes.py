@@ -95,7 +95,7 @@ def delete_article(article_id):
   if article.user_id == current_user.id:
     db.session.delete(article)
     db.session.commit()
-    return article.to_dict()
+    return f"Deleted Article: {article_id}"
   else:
     return {'Error': 'Invalid Request'}, 401
 

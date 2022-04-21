@@ -24,9 +24,6 @@ def create_comment(article_id):
   form = CommentForm()
   form['csrf_token'].data = request.cookies['csrf_token']
 
-
-  print(f'this is the juiceeeeeeeeee', article_id)
-
   if form.validate_on_submit():
     comment = Comment(
       article_id=article_id,
@@ -58,13 +55,12 @@ def edit_comment(comment_id):
 
 
 # delete one comment
-@comment_routes.route('/<int:comment_id>', methods=['DELETE'])
+@comment_routes.route('/<int:comment_id>/delete/', methods=['DELETE'])
 def delete_comment(comment_id):
 
-  comment = Comment.query.filter(Comment.id == comment_id).one()
-
+  comment = Comment.query.filter(Comment.id == comment_id).first()
 
   db.session.delete(comment)
   db.session.commit()
 
-  return comment.to_dict()
+  return f"Deleted Comment: {comment_id}"
