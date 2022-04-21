@@ -24,9 +24,9 @@ const ArticlePage = () => {
 
   const article = useSelector((state) => state.article[articleId]);
 
-  useEffect(async() => {
-    await dispatch(fetchArticle(articleId));
-    await dispatch(fetchComments(articleId));
+  useEffect(() => {
+    dispatch(fetchArticle(articleId));
+    dispatch(fetchComments(articleId));
   }, [dispatch]);
 
 
@@ -65,7 +65,6 @@ const ArticlePage = () => {
             ))}
         </div>
         <CreateComment />
-        <EditComment />
       </div>
     )
   } if (sessionUser) {
