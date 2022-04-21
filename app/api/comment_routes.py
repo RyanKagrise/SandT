@@ -24,9 +24,6 @@ def create_comment(article_id):
   form = CommentForm()
   form['csrf_token'].data = request.cookies['csrf_token']
 
-
-  print(f'this is the juiceeeeeeeeee', article_id)
-
   if form.validate_on_submit():
     comment = Comment(
       article_id=article_id,

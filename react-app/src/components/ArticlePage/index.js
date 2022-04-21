@@ -23,14 +23,13 @@ const ArticlePage = ({ comment }) => {
   // const comments = useSelector((state) => state.article.comments)
 
   const article = useSelector((state) => state.article[articleId]);
-  
+
 
   useEffect(() => {
     dispatch(fetchArticle(articleId));
     dispatch(fetchComments(articleId));
   }, [dispatch]);
 
-  // const editComment = (comment)
 
   const destroyComment = async (e, comment) => {
     e.preventDefault();
