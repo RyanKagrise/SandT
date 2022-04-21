@@ -113,9 +113,7 @@ export const removeArticle = (article) => async dispatch => {
     method: 'delete'
   });
   if (res.ok) {
-    const removedArticle = await res.json();
-    await dispatch(deleteArticle(removedArticle))
-    return removedArticle;
+    await dispatch(deleteArticle(article.id))
   }
   return false;
 }

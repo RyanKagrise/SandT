@@ -1,14 +1,14 @@
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
+import { useEffect} from 'react'
 import { fetchArticle } from '../../store/article'
 import { fetchComments, removeComment } from '../../store/comment'
-import { Redirect, useHistory, NavLink } from 'react-router-dom'
-import { removeArticle } from '../../store/article'
-import { ErrorMessage } from '../utils/ErrorMessage'
+import { useHistory, NavLink } from 'react-router-dom'
+// import { removeArticle } from '../../store/article'
+// import { ErrorMessage } from '../utils/ErrorMessage'
 import DeleteArticle from '../DeleteArticle'
 import CreateComment from '../CreateComment'
-import EditComment from '../EditComment'
+// import EditComment from '../EditComment'
 import './ArticlePage.css'
 
 const ArticlePage = ({ comment }) => {
@@ -21,10 +21,9 @@ const ArticlePage = ({ comment }) => {
 
   const sessionUser = useSelector((state) => state.session.user);
   // const comments = useSelector((state) => state.article.comments)
-  console.log('SESSIONUSER---------------->', sessionUser)
 
   const article = useSelector((state) => state.article[articleId]);
-  console.log("ARTICLE ------------------>", article)
+  
 
   useEffect(() => {
     dispatch(fetchArticle(articleId));
@@ -43,7 +42,7 @@ const ArticlePage = ({ comment }) => {
     let destroyedComment;
     try {
       console.log('payload ----------->', payload)
-      destroyedComment = await dispatch(removeComment(payload))
+      destroyedComment = await dispatch(removeComment(payload)).then(() => dispatch(fetchArticle(articleId))).then(() => history.push(`/articles/${articleId}`));
       // .then(() => dispatch(fetchArticle(articleId))).then(() => history.push(`/articles/${articleId}`));
     } catch (error) {
       (console.log('error in delete'))

@@ -62,8 +62,8 @@ def edit_comment(comment_id):
 def delete_comment(comment_id):
 
   comment = Comment.query.filter(Comment.id == comment_id).first()
-  res = {"id": id}
+
   db.session.delete(comment)
   db.session.commit()
 
-  return res
+  return f"Deleted Comment: {comment_id}"

@@ -100,10 +100,7 @@ export const removeComment = (comment) => async dispatch => {
   });
   console.log(res.ok)
   if (res.ok) {
-    const removedComment = await res.json();
-    console.log('removed commmmmmment', removedComment)
-    await dispatch(deleteComment(removedComment))
-    return removedComment;
+    await dispatch(deleteComment(comment.id))
   }
   return false;
 }
