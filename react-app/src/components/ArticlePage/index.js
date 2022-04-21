@@ -8,7 +8,7 @@ import { useHistory, NavLink } from 'react-router-dom'
 // import { ErrorMessage } from '../utils/ErrorMessage'
 import DeleteArticle from '../DeleteArticle'
 import CreateComment from '../CreateComment'
-// import EditComment from '../EditComment'
+import EditComment from '../EditComment'
 import './ArticlePage.css'
 
 const ArticlePage = ({ comment }) => {
@@ -62,6 +62,27 @@ const ArticlePage = ({ comment }) => {
     }
   }
 
+  const showEdit = (comment) => {
+    if (sessionUser?.id === comment?.user_id) {
+      return (
+        <button
+          type='submit'
+          onClick={(e) => editCommentFunc(e, comment)}
+          className='PLACEHOLDER'
+        >
+          edit comment
+        </button>
+      )
+    }
+  }
+
+  const editCommentFunc = (e, comment) => {
+      return (
+        <EditComment />
+      )
+  }
+
+
   if (sessionUser?.id === article?.user_id) {
     return (
       <div className='page-container'>
@@ -93,6 +114,9 @@ const ArticlePage = ({ comment }) => {
               </div>
               <div>
                 {deleteComment(comment)}
+              </div>
+              <div>
+                {showEdit(comment)}
               </div>
             </div>
           ))}
