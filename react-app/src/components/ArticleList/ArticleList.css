@@ -42,7 +42,9 @@
   height: 550px; */
   background-color: grey;
   border-radius: 10%;
-  transform: scale(1.1);
+  transform: scale(1.05);
+  font-size: 20px;
+  box-sizing: border-box;
  }
 
 
@@ -62,6 +64,3 @@
   width: 300px;
   object-fit: cover;
 }
-
-
-

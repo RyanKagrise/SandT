@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from ..models import db, User, Article, Comment
+from app.forms import CommentForm
 # from random import randint
 
 comment_routes = Blueprint('comments', __name__)
@@ -15,6 +16,32 @@ comment_routes = Blueprint('comments', __name__)
 #   comment = Comment.query.filter(Comment.id == comment_id).one()
 #   print('comment------------------>', comment)
 #   return comment.to_dict()
+
+# create one comment
+@comment_routes.route('/<int:article_id>/new', methods=['POST'])
+def create_comment(article_id):
+
+  form = CommentForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+
+
+  print(f'this is the juiceeeeeeeeee', article_id)
+
+  if form.validate_on_submit():
+    comment = Comment(
+      article_id=article_id,
+      user_id=current_user.id,
+      content=form.data["content"]
+  )
+
+    db.session.add(comment)
+    db.session.flush()
+    db.session.commit()
+
+    return comment.to_dict();
+  return {'errors': error_handling(form.errors)}, 400
+
+
 
 
 # edit one comment
