@@ -10,6 +10,7 @@ import DeleteArticle from '../DeleteArticle'
 import CreateComment from '../CreateComment'
 import EditComment from '../EditComment'
 import './ArticlePage.css'
+import { Modal } from '../../context/Modal'
 
 const ArticlePage = ({ comment }) => {
 
@@ -56,31 +57,47 @@ const ArticlePage = ({ comment }) => {
           onClick={(e) => destroyComment(e, comment)}
           className='PLACEHOLDER'
         >
-          delete comment
+          Delete
         </button>
       )
     }
   }
 
-  const showEdit = (comment) => {
+  // const showEdit = (comment) => {
+  //   if (sessionUser?.id === comment?.user_id) {
+  //     return (
+  //       <EditModal />
+  //     )
+  //   }
+  // }
+
+  const editCommentShow = (comment) => {
     if (sessionUser?.id === comment?.user_id) {
-      return (
-        <button
-          type='submit'
-          onClick={(e) => editCommentFunc(e, comment)}
-          className='PLACEHOLDER'
-        >
-          edit comment
-        </button>
-      )
-    }
-  }
-
-  const editCommentFunc = (e, comment) => {
       return (
         <EditComment />
       )
+    }
   }
+
+  // const updateSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   const updatedComment = {
+  //     article_id: article.id,
+  //     user_id: sessionUser.id,
+  //     content,
+  //   };
+
+  //   let editedComment;
+
+  //   try {
+  //     editedComment = await dispatch(updateComment(updatedComment)).then(() => dispatch(fetchArticle(article.id)))
+  //     // setContent("")
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+
 
 
   if (sessionUser?.id === article?.user_id) {
@@ -116,7 +133,7 @@ const ArticlePage = ({ comment }) => {
                 {deleteComment(comment)}
               </div>
               <div>
-                {showEdit(comment)}
+                {editCommentShow(comment)}
               </div>
             </div>
           ))}
