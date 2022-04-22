@@ -5,21 +5,21 @@ import { fetchArticle } from '../../store/article';
 import { useHistory, useParams } from 'react-router-dom'
 
 
-
-
-const EditComment = (article) => {
+const EditComment = ( article ) => {
   let history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
-  const [content, setContent] = useState();
-  const [errors, setErrors] = useState([]);
 
 
   const commentParam = useParams();
   const commentId = commentParam.id;
+  console.log(commentId)
+  const comment = useSelector((state) => state.comment[commentId])
   // const article = useSelector((state) => state.article[articleId]);
 
+  const [content, setContent] = useState(comment?.content);
+  const [errors, setErrors] = useState([]);
   // useEffect(() => {
   //   const validationErrors = [];
   //   if (content.length > 255)

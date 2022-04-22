@@ -4,6 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { ErrorMessage } from '../utils/ErrorMessage';
 import { updateArticle } from '../../store/article';
 
+
 const EditArticle = () => {
   let history = useHistory();
   const dispatch = useDispatch();
@@ -21,22 +22,22 @@ const EditArticle = () => {
   const [errors, setErrors] = useState([]);
   const [errorMessages, setErrorMessages] = useState({});
 
-  useEffect(() => {
-    const validationErrors = [];
-    if (title.length > 40)
-      return validationErrors.push(
-        'Please limit titles to less than 40 characters!'
-      );
-    // if (region.length > 25)
-    //   return validationErrors.push(
-    //     'Pleast limit region names to less than 25 characters!'
-    //   )
-    // if (content.length > 255)
-    //   return validationErrors.push(
-    //     'Please limit event content to less than 255 characters!'
-    //   )
-    setErrors(validationErrors);
-  }, [title]);
+  // useEffect(() => {
+  //   const validationErrors = [];
+  //   if (title.length > 40)
+  //     return validationErrors.push(
+  //       'Please limit titles to less than 40 characters!'
+  //     );
+  //   // if (region.length > 25)
+  //   //   return validationErrors.push(
+  //   //     'Pleast limit region names to less than 25 characters!'
+  //   //   )
+  //   // if (content.length > 255)
+  //   //   return validationErrors.push(
+  //   //     'Please limit event content to less than 255 characters!'
+  //   //   )
+  //   setErrors(validationErrors);
+  // }, [title]);
 
 
   const handleSubmit = async (e) => {
