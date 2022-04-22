@@ -10,9 +10,8 @@ import DeleteArticle from '../DeleteArticle'
 import CreateComment from '../CreateComment'
 import EditComment from '../EditComment'
 import './ArticlePage.css'
-import { Modal } from '../../context/Modal'
 
-const ArticlePage = ({ comment }) => {
+const ArticlePage = () => {
 
   let history = useHistory();
   const dispatch = useDispatch();
@@ -53,7 +52,7 @@ const ArticlePage = ({ comment }) => {
     if (sessionUser?.id === comment?.user_id) {
       return (
         <>
-          <NavLink className='standard-link' exact to={`/comments/${comment.id}/edit`}>
+          <NavLink className='standard-link' exact to={`/articles/${article.id}/comments/${comment.id}/edit`}>
             Edit
           </NavLink>
           <button

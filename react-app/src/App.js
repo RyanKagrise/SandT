@@ -56,7 +56,7 @@ function App() {
         <ProtectedRoute path='/articles/:id/edit' exact={true} >
           <EditArticle />
         </ProtectedRoute>
-        <ProtectedRoute path='/comments/:id/edit' exact={true} >
+        <ProtectedRoute path='/articles/:articleId/comments/:commentId/edit' exact={true} >
           <EditComment />
         </ProtectedRoute>
         <Route path='/articles/:id' exact={true} >
