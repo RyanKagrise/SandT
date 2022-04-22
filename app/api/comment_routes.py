@@ -42,16 +42,25 @@ def create_comment(article_id):
 
 
 # edit one comment
-@comment_routes.route('/<int:comment_id>', methods=['PUT'])
-def edit_comment(comment_id):
-  data = request.get_json(force=True)
+@comment_routes.route('/<int:comment_id>/', methods=['PUT'])
+def edit_article(comment_id):
+
+  form = CommentForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+
+  comment_id = request.json['id']
   comment = Comment.query.get(comment_id)
-  if 'content' in data.keys():
-      comment.content = data['content']
 
-  db.session.commit()
+  if form.validate_on_submit() and comment.user_id == current_user.id:
+    comment.content=form.data["content"]
 
-  return comment.to_dict()
+    db.session.add(comment)
+    db.session.flush()
+    db.session.commit()
+
+    return comment.to_dict()
+
+  return {'errors': error_handling(form.errors)}, 400
 
 
 # delete one comment

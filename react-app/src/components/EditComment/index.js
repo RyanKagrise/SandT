@@ -5,34 +5,37 @@ import { fetchArticle } from '../../store/article';
 import { useHistory, useParams } from 'react-router-dom'
 
 
-const EditComment = ( article ) => {
+const EditComment = () => {
   let history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-
-  const commentParam = useParams();
-  const commentId = commentParam.id;
-  console.log(commentId)
-  const comment = useSelector((state) => state.comment[commentId])
-  console.log(comment)
-  const [content, setContent] = useState(comment?.content);
+  const {articleId, commentId} = useParams();
+  const article = useSelector((state) => state.article[articleId])
+  console.log('article ----------------->', article)
+  const [content, setContent] = useState('');
   const [errors, setErrors] = useState([]);
-  // useEffect(() => {
-  //   const validationErrors = [];
-  //   if (content.length > 255)
-  //     return validationErrors.push(
-  //       "Please limit content to 255 characters or less!"
-  //     );
-  //   setErrors(validationErrors);
-  //   // dispatch(fetchArticle(article_id))
-  // }, [content]);
+
+  // const comment = useSelector((state) => state.article.comments[commentId])
+
+  // console.log('THIS IS IT------------->', comment)
+
+  useEffect(() => {
+    // const validationErrors = [];
+    // if (content.length > 255)
+    //   return validationErrors.push(
+    //     "Please limit content to 255 characters or less!"
+    //   );
+    // setErrors(validationErrors);
+    dispatch(fetchArticle(articleId))
+  }, [dispatch]);
+
 
   const editComment = async (e) => {
     e.preventDefault();
 
     const updatedComment = {
       id: commentId,
-      article_id: article.id,
+      article_id: articleId,
       user_id: sessionUser.id,
       content,
     };
@@ -40,7 +43,7 @@ const EditComment = ( article ) => {
     let editedComment;
 
     try {
-      editedComment = await dispatch(updateComment(updatedComment)).then(() => fetchArticle(article.id)).then(() => history.push(`/articles/${article.id}`))
+      editedComment = await dispatch(updateComment(updatedComment)).then(() => fetchArticle(articleId)).then(() => history.push(`/articles/${articleId}`))
     } catch (error) {
       console.log(error)
     }

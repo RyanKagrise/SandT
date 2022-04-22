@@ -23,7 +23,7 @@ const ArticlePage = () => {
   // const comments = useSelector((state) => state.article.comments)
 
   const article = useSelector((state) => state.article[articleId]);
-
+ 
 
   useEffect(() => {
     dispatch(fetchArticle(articleId));
