@@ -11,8 +11,8 @@ const EditComment = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const {articleId, commentId} = useParams();
   const article = useSelector((state) => state.article[articleId])
-  console.log('article ----------------->', article)
-  const [content, setContent] = useState('');
+  const comment = useSelector((state) => state.comment[commentId])
+  const [content, setContent] = useState(comment?.content);
   const [errors, setErrors] = useState([]);
 
   // const comment = useSelector((state) => state.article.comments[commentId])
@@ -20,18 +20,16 @@ const EditComment = () => {
   // console.log('THIS IS IT------------->', comment)
 
   useEffect(() => {
-    // const validationErrors = [];
-    // if (content.length > 255)
-    //   return validationErrors.push(
-    //     "Please limit content to 255 characters or less!"
-    //   );
-    // setErrors(validationErrors);
     dispatch(fetchArticle(articleId))
-  }, [dispatch]);
+  }, [content, dispatch]);
 
 
   const editComment = async (e) => {
     e.preventDefault();
+
+    if (content.length > 255) {
+      return setErrors(["Please limit content to 255 characters or less!"])
+    }
 
     const updatedComment = {
       id: commentId,
@@ -42,10 +40,17 @@ const EditComment = () => {
 
     let editedComment;
 
-    try {
-      editedComment = await dispatch(updateComment(updatedComment)).then(() => fetchArticle(articleId)).then(() => history.push(`/articles/${articleId}`))
-    } catch (error) {
-      console.log(error)
+    editedComment = await dispatch(updateComment(updatedComment))
+    await dispatch(fetchArticle(articleId))
+      // .then(() => history.push(`/articles/${articleId}`))
+    // if (!editedComment) {
+    //   setErrors(editedComment)
+    //   console.log(editedComment)
+    // }
+
+
+    if(errors.length === 0) {
+      history.push(`/articles/${articleId}`)
     }
   }
 

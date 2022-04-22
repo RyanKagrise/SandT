@@ -42,7 +42,7 @@ def create_comment(article_id):
 
 
 # edit one comment
-@comment_routes.route('/<int:comment_id>/', methods=['PUT'])
+@comment_routes.route('/<int:comment_id>', methods=['PUT'])
 def edit_article(comment_id):
 
   form = CommentForm()

@@ -72,7 +72,7 @@ export const createNewComment = (article_id, comment) => async dispatch => {
 
 
 export const updateComment = (comment) => async dispatch => {
-  const res = await fetch(`/api/comments/${comment.id}/`, {
+  const res = await fetch(`/api/comments/${comment.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -86,6 +86,7 @@ export const updateComment = (comment) => async dispatch => {
   } else if (res.status < 500) {
     const data = await res.json()
     if (data.errors) {
+      console.log('------------------------------>', data.errors)
       return data.errors;
     }
   } else {
