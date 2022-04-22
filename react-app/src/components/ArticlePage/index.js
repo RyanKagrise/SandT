@@ -53,7 +53,7 @@ const ArticlePage = ({ comment }) => {
     if (sessionUser?.id === comment?.user_id) {
       return (
         <>
-          <NavLink className='standard-link' exact to={`/articles/${article?.id}/comments/${comment.id}`}>
+          <NavLink className='standard-link' exact to={`/comments/${comment.id}/edit`}>
             Edit
           </NavLink>
           <button

@@ -112,7 +112,6 @@ const EditArticle = () => {
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
-                <option value="">-- Choose A Certification Level --</option>
                 <option value={"Open Water"}>Open Water</option>
                 <option value={"Advanced"}>Advanced</option>
                 <option value={"Rescue"}>Rescue</option>

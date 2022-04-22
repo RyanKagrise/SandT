@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { updateComment } from '../../store/comment';
 import { fetchArticle } from '../../store/article';
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 
 
 
 
-const EditComment = (article, comment) => {
+const EditComment = (article) => {
   let history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -15,6 +15,10 @@ const EditComment = (article, comment) => {
   const [content, setContent] = useState();
   const [errors, setErrors] = useState([]);
 
+
+  const commentParam = useParams();
+  const commentId = commentParam.id;
+  // const article = useSelector((state) => state.article[articleId]);
 
   // useEffect(() => {
   //   const validationErrors = [];
@@ -30,6 +34,7 @@ const EditComment = (article, comment) => {
     e.preventDefault();
 
     const updatedComment = {
+      id: commentId,
       article_id: article.id,
       user_id: sessionUser.id,
       content,
@@ -47,33 +52,33 @@ const EditComment = (article, comment) => {
 
   return (
     <>
+      <div className=''>
         <div className=''>
-          <div className=''>
-            <div className=''>Edit Comment</div>
-          </div>
-          <form onSubmit={editComment}>
-            <div>
-              {errors.map((error, ind) => (
-                <div key={ind}>{error}</div>
-              ))}
-            </div>
-            <div className=''>
-              <label htmlFor='content'></label>
-              <textarea
-                name='content'
-                placeholder='Edit Comment'
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                required
-              />
-            </div>
-            <div className=''>
-              <div id=''>
-                <button className='' type='submit'>Submit</button>
-              </div>
-            </div>
-          </form>
+          <div className=''>Edit Comment</div>
         </div>
+        <form onSubmit={editComment}>
+          <div>
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
+          <div className=''>
+            <label htmlFor='content'></label>
+            <textarea
+              name='content'
+              placeholder='Edit Comment'
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              required
+            />
+          </div>
+          <div className=''>
+            <div id=''>
+              <button className='' type='submit'>Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </>
   )
 };
