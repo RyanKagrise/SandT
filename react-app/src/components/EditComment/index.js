@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { Modal } from '../../context/Modal';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { updateComment } from '../../store/comment';
 import { fetchArticle } from '../../store/article';
+import { useHistory } from 'react-router-dom'
 
 
 
 
-const EditComment = ({ article, comment }) => {
+const EditComment = (article, comment) => {
+  let history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
   const [content, setContent] = useState();
   const [errors, setErrors] = useState([]);
-  const [showModal, setShowModal] = useState(false);
 
 
   // useEffect(() => {
@@ -38,8 +38,7 @@ const EditComment = ({ article, comment }) => {
     let editedComment;
 
     try {
-      editedComment = await dispatch(updateComment(updatedComment)).then(() => fetchArticle(article.id))
-      setShowModal(false)
+      editedComment = await dispatch(updateComment(updatedComment)).then(() => fetchArticle(article.id)).then(() => history.push(`/articles/${article.id}`))
     } catch (error) {
       console.log(error)
     }
@@ -48,9 +47,6 @@ const EditComment = ({ article, comment }) => {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)} className=""> Edit </button>
-      {showModal && (
-      <Modal onClose={() => setShowModal(false)} >
         <div className=''>
           <div className=''>
             <div className=''>Edit Comment</div>
@@ -62,10 +58,9 @@ const EditComment = ({ article, comment }) => {
               ))}
             </div>
             <div className=''>
-              <label htmlFor='content'>Edit Comment</label>
+              <label htmlFor='content'></label>
               <textarea
                 name='content'
-                style=''
                 placeholder='Edit Comment'
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
@@ -79,8 +74,6 @@ const EditComment = ({ article, comment }) => {
             </div>
           </form>
         </div>
-      </Modal>
-      )}
     </>
   )
 };

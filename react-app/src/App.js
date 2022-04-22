@@ -13,6 +13,7 @@ import ArticlePage from './components/ArticlePage';
 import LandingPage from './components/LandingPage';
 import EditArticle from './components/EditArticle';
 import CreateArticle from './components/CreateArticle'
+import EditComment from './components/EditComment';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -54,6 +55,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/articles/:id/edit' exact={true} >
           <EditArticle />
+        </ProtectedRoute>
+        <ProtectedRoute path='/articles/:id/comments/:id' exact={true} >
+          <EditComment />
         </ProtectedRoute>
         <Route path='/articles/:id' exact={true} >
           <ArticlePage />

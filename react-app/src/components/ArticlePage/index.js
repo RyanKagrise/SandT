@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect} from 'react'
+import { useEffect, useState } from 'react'
 import { fetchArticle } from '../../store/article'
 import { fetchComments, removeComment } from '../../store/comment'
 import { useHistory, NavLink } from 'react-router-dom'
@@ -49,16 +49,21 @@ const ArticlePage = ({ comment }) => {
     }
   }
 
-  const deleteComment = (comment) => {
+  const alterComment = (comment) => {
     if (sessionUser?.id === comment?.user_id) {
       return (
-        <button
-          type='submit'
-          onClick={(e) => destroyComment(e, comment)}
-          className='PLACEHOLDER'
-        >
-          Delete
-        </button>
+        <>
+          <NavLink className='standard-link' exact to={`/articles/${article?.id}/comments/${comment.id}`}>
+            Edit
+          </NavLink>
+          <button
+            type='submit'
+            onClick={(e) => destroyComment(e, comment)}
+            className='PLACEHOLDER'
+          >
+            Delete
+          </button>
+        </>
       )
     }
   }
@@ -71,32 +76,14 @@ const ArticlePage = ({ comment }) => {
   //   }
   // }
 
-  const editCommentShow = (comment) => {
-    if (sessionUser?.id === comment?.user_id) {
-      return (
-        <EditComment />
-      )
-    }
-  }
-
-  // const updateSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   const updatedComment = {
-  //     article_id: article.id,
-  //     user_id: sessionUser.id,
-  //     content,
-  //   };
-
-  //   let editedComment;
-
-  //   try {
-  //     editedComment = await dispatch(updateComment(updatedComment)).then(() => dispatch(fetchArticle(article.id)))
-  //     // setContent("")
-  //   } catch (error) {
-  //     console.log(error)
+  // const editCommentShow = (comment) => {
+  //   if (sessionUser?.id === comment?.user_id) {
+  //     return (
+  //       <EditComment />
+  //     )
   //   }
   // }
+
 
 
 
@@ -130,10 +117,7 @@ const ArticlePage = ({ comment }) => {
               <div>
               </div>
               <div>
-                {deleteComment(comment)}
-              </div>
-              <div>
-                {editCommentShow(comment)}
+                {alterComment(comment)}
               </div>
             </div>
           ))}
@@ -162,7 +146,7 @@ const ArticlePage = ({ comment }) => {
                   {comment?.owner}
                 </div>
                 <div>
-                  {deleteComment(comment)}
+                  {alterComment(comment)}
                 </div>
               </div>
             ))}

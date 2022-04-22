@@ -1,0 +1,54 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 200px;
+  padding: 50px;
+}
+
+.username-signup {
+  padding: 20px;
+}
+
+.email-signup {
+  padding: 20px;
+}
+
+.password-signup {
+  padding: 20px;
+}
+
+.repeat-signup {
+  padding: 20px;
+}
+
+.signup-button {
+  border: 2px grey solid;
+  border-radius: 10px;
+  background-color: white;
+  margin-top: 30px;
+  margin-left: 110px;
+}
+
+.title-login {
+  margin-bottom: 40px;
+  font-size: 30px;
+  font-weight: 100;
+  border: 2px grey solid;
+  padding: 15px;
+  border-radius: 10px;
+  max-width: fit-content;
+}
+
+.username-label {
+  padding-right: 5px;
+}
+
+.email-label {
+  padding-right: 5px;
+}
+
+.password-label {
+  padding-right: 5px;
+}
