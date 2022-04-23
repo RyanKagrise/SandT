@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom';
 import { ErrorMessage } from '../utils/ErrorMessage';
-import { updateArticle } from '../../store/article';
+import { updateArticle, fetchArticle } from '../../store/article';
 
 
 const EditArticle = () => {
@@ -22,26 +22,22 @@ const EditArticle = () => {
   const [errors, setErrors] = useState([]);
   const [errorMessages, setErrorMessages] = useState({});
 
-  // useEffect(() => {
-  //   const validationErrors = [];
-  //   if (title.length > 40)
-  //     return validationErrors.push(
-  //       'Please limit titles to less than 40 characters!'
-  //     );
-  //   // if (region.length > 25)
-  //   //   return validationErrors.push(
-  //   //     'Pleast limit region names to less than 25 characters!'
-  //   //   )
-  //   // if (content.length > 255)
-  //   //   return validationErrors.push(
-  //   //     'Please limit event content to less than 255 characters!'
-  //   //   )
-  //   setErrors(validationErrors);
-  // }, [title]);
+  const allowedImages = (image) => {
+    return (image?.includes('jpg') || image?.includes('jpeg') || image?.includes('png'))
+  }
+
+  useEffect(() => {
+  dispatch(fetchArticle(articleId))
+  setErrors([])
+  }, [image, dispatch]);
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!allowedImages(image)) {
+    return setErrors(['Image must be in the following format: .jpg, .jpeg, and/or .png!']);
+    }
 
     const updatedArticle = {
       id: article.id,

@@ -21,6 +21,7 @@ const EditComment = () => {
 
   useEffect(() => {
     dispatch(fetchArticle(articleId))
+    setErrors([])
   }, [content, dispatch]);
 
 
@@ -28,6 +29,7 @@ const EditComment = () => {
     e.preventDefault();
 
     if (content.length > 255) {
+      console.log(errors)
       return setErrors(["Please limit content to 255 characters or less!"])
     }
 
@@ -47,9 +49,10 @@ const EditComment = () => {
     //   setErrors(editedComment)
     //   console.log(editedComment)
     // }
-
+    console.log(errors)
 
     if(errors.length === 0) {
+      console.log('is this being hit???????????')
       history.push(`/articles/${articleId}`)
     }
   }
