@@ -9,6 +9,7 @@ import { useHistory, NavLink } from 'react-router-dom'
 import DeleteArticle from '../DeleteArticle'
 import CreateComment from '../CreateComment'
 import EditComment from '../EditComment'
+import Footer from '../Footer'
 import './ArticlePage.css'
 
 const ArticlePage = () => {
@@ -128,6 +129,9 @@ const ArticlePage = () => {
           ))}
         </div>
         <CreateComment />
+        <div>
+          <Footer />
+        </div>
       </div>
     )
   } if (sessionUser) {
