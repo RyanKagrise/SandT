@@ -1,5 +1,6 @@
 .comment {
   margin: 10px;
+  margin-bottom: 20px;
 }
 
 .article-container {
@@ -21,15 +22,38 @@
   width: 100%;
 }
 
-.comment-box {
-  border: 1px solid black;
-  margin-top: 10px;
-}
-
 .edit-delete-buttons {
   box-shadow: none;
 }
 
-.standard-link {
+.edit-comment {
   margin-right: 10px;
+  background-color: white;
+  color: black;
+  border: 2px grey solid;
+  border-radius: 10px;
+  padding: 1px 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: "Avenir Next", Calibri, Verdana, sans-serif;
+  font-size: 16px;
+}
+
+.comment-buttons-div {
+  margin-top: 10px;
+}
+
+.comment-box {
+  margin-top: 10px;
+  border: 2px grey solid;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.article-image {
+  height: 500px;
+  width: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 30px;
 }

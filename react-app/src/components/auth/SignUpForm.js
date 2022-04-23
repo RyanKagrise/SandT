@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import DemoUser from '../DemoUser';
 import './SignUp.css'
 
 const SignUpForm = () => {
@@ -15,11 +16,13 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+
+    if (password !== repeatPassword) {
+      setErrors(["Password and Repeat Password Field Must Match!"])
+    }
+
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
-      if (data) {
-        setErrors(data)
-      }
     }
   };
 
@@ -94,8 +97,16 @@ const SignUpForm = () => {
               required={true}
             ></input>
           </div>
-          <button className='signup-button' type='submit'>Sign Up</button>
+          <div className='signup-div'>
+            <button className='signup-button'  type='submit'>Sign Up</button>
+          </div>
         </form>
+        <div className='demo-signup'>
+          <div className='demo-div'>
+            Try our site out as a demo user instead!
+          </div>
+          <DemoUser />
+        </div>
       </div>
     </>
   );

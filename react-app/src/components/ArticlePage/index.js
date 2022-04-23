@@ -9,6 +9,7 @@ import { useHistory, NavLink } from 'react-router-dom'
 import DeleteArticle from '../DeleteArticle'
 import CreateComment from '../CreateComment'
 import EditComment from '../EditComment'
+import Footer from '../Footer'
 import './ArticlePage.css'
 
 const ArticlePage = () => {
@@ -52,16 +53,18 @@ const ArticlePage = () => {
     if (sessionUser?.id === comment?.user_id) {
       return (
         <>
-          <NavLink className='standard-link' exact to={`/articles/${article.id}/comments/${comment.id}/edit`}>
-            Edit
-          </NavLink>
-          <button
-            type='submit'
-            onClick={(e) => destroyComment(e, comment)}
-            className='PLACEHOLDER'
-          >
-            Delete
-          </button>
+          <div className='comment-buttons-div'>
+            <NavLink className='edit-comment' exact to={`/articles/${article.id}/comments/${comment.id}/edit`}>
+              Edit
+            </NavLink>
+            <button
+              type='submit'
+              onClick={(e) => destroyComment(e, comment)}
+              className='edit-comment'
+            >
+              Delete
+            </button>
+          </div>
         </>
       )
     }
@@ -92,41 +95,44 @@ const ArticlePage = () => {
     )
   } if (sessionUser?.id === article?.user_id) {
     return (
-      <div className='page-container'>
-        <div className=''>
-          <div className='article-container'>
-            <h2 className=''>{article?.title}</h2>
-            {article ? <img className='' src={article?.image} alt='' /> : null}
-            <p className=''>{article?.content}</p>
-            <p className=''>Category: {article?.category}</p>
-            <p className=''>Created At: {article?.created_at}</p>
-          </div>
-        </div>
-        <div className='edit-delete-buttons'>
-          <NavLink className='standard-link' exact to={`/articles/${article?.id}/edit`}>
-            Edit Article
-          </NavLink>
-          <DeleteArticle />
-        </div>
-        <div className='comment-box'>
-          {article?.comments?.map((comment) => (
-            <div key={comment.id} className='comment'>
-              <div>
-                {comment?.content}
-              </div>
-              <div>
-                {comment?.owner}
-              </div>
-              <div>
-              </div>
-              <div>
-                {alterComment(comment)}
-              </div>
+      <>
+        <div className='page-container'>
+          <div className=''>
+            <div className='article-container'>
+              <h2 className=''>{article?.title}</h2>
+              {article ? <img className='article-image' src={article?.image} alt='' /> : null}
+              <p className=''>{article?.content}</p>
+              <p className=''>Category: {article?.category}</p>
+              {/* <p className=''>Created At: {article?.created_at}</p> */}
             </div>
-          ))}
+          </div>
+          <div className='edit-delete-buttons'>
+            <NavLink className='edit-comment' exact to={`/articles/${article?.id}/edit`}>
+              Edit Article
+            </NavLink>
+            <DeleteArticle />
+          </div>
+          <div className='comment-box'>
+            {article?.comments?.map((comment) => (
+              <div key={comment.id} className='comment'>
+                <div>
+                  {comment?.content}
+                </div>
+                <div>
+                  {comment?.owner}
+                </div>
+                <div>
+                </div>
+                <div>
+                  {alterComment(comment)}
+                </div>
+              </div>
+            ))}
+          </div>
+          <CreateComment />
         </div>
-        <CreateComment />
-      </div>
+        <Footer />
+      </>
     )
   } if (sessionUser) {
     return (
@@ -134,14 +140,14 @@ const ArticlePage = () => {
         <div className='page-container'>
           <div className='article-container'>
             <h2 className=''>{article?.title}</h2>
-            {article ? <img className='' src={article?.image} alt='' /> : null}
+            {article ? <img className='article-image' src={article?.image} alt='' /> : null}
             <p className=''>{article?.content}</p>
             <p className=''>Category: {article?.category}</p>
-            <p className=''>Created At: {article?.created_at}</p>
+            {/* <p className=''>Created At: {article?.created_at}</p> */}
           </div>
           <div className='comment-box'>
             {article?.comments?.map((comment) => (
-              <div key={comment.id}>
+              <div key={comment.id} className='comment'>
                 <div>
                   {comment?.content}
                 </div>
@@ -159,6 +165,7 @@ const ArticlePage = () => {
           </div>
           <CreateComment />
         </div>
+        <Footer />
       </>
     )
   } else {
@@ -167,14 +174,14 @@ const ArticlePage = () => {
         <div className='page-container'>
           <div className='article-container'>
             <h2 className=''>{article?.title}</h2>
-            {article ? <img className='' src={article?.image} alt='' /> : null}
+            {article ? <img className='article-image' src={article?.image} alt='' /> : null}
             <p className=''>{article?.content}</p>
             <p className=''>Category: {article?.category}</p>
-            <p className=''>Created At: {article?.created_at}</p>
+            {/* <p className=''>Created At: {article?.created_at}</p> */}
           </div>
           <div className='comment-box'>
             {article?.comments?.map((comment) => (
-              <div key={comment.id}>
+              <div key={comment.id} className='comment'>
                 <div>
                   {comment?.content}
                 </div>
@@ -188,6 +195,7 @@ const ArticlePage = () => {
 
           </div>
         </div>
+        <Footer />
       </>
     )
   }

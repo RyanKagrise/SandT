@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { fetchArticles } from '../../store/article';
-// import Footer from '../Footer'
 import './ArticleList.css'
 
 const ArticleList = () => {
@@ -51,7 +50,6 @@ const ArticleList = () => {
           </ul>
         </div>
       </div>
-      {/* <Footer /> */}
     </>
   )
 }

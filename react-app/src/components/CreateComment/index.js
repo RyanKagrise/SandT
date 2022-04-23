@@ -76,7 +76,7 @@ const CreateComment = () => {
           <button
             type='submit'
             disabled={errors.length > 0}
-            className='create-button'
+            className='create-comment'
           >
             Create Comment
           </button>

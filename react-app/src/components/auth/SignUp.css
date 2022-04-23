@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 200px;
+  margin-top: 100px;
   padding: 50px;
 }
 
@@ -23,12 +23,32 @@
   padding: 20px;
 }
 
+.demo-div {
+  padding: 20px;
+  margin-top: 20px;
+  padding-bottom: 0px;
+}
+
+.signup-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+}
+
 .signup-button {
+  margin: 0 auto;
+  width: 75px;
+  cursor: pointer;
+  background-color: white;
+  color: black;
   border: 2px grey solid;
   border-radius: 10px;
-  background-color: white;
-  margin-top: 30px;
-  margin-left: 110px;
+  padding: 1px 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: "Avenir Next", Calibri, Verdana, sans-serif;
+  font-size: 16px;
 }
 
 .title-login {

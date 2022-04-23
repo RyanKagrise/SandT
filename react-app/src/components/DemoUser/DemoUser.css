@@ -1,5 +1,11 @@
-.create-comment {
-  margin-right: 10px;
+.demoUserButton {
+  cursor: pointer;
+}
+
+.demo-button {
+  margin: 0 auto;
+  width: 100px;
+  cursor: pointer;
   background-color: white;
   color: black;
   border: 2px grey solid;
@@ -9,5 +15,11 @@
   font-weight: bold;
   font-family: "Avenir Next", Calibri, Verdana, sans-serif;
   font-size: 16px;
+}
+
+.demo-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin-top: 20px;
 }
