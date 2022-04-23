@@ -97,9 +97,14 @@ const SignUpForm = () => {
               required={true}
             ></input>
           </div>
-          <button className='signup-button' type='submit'>Sign Up</button>
+          <div className='signup-div'>
+            <button className='signup-button'  type='submit'>Sign Up</button>
+          </div>
         </form>
-        <div>
+        <div className='demo-signup'>
+          <div className='demo-div'>
+            Try our site out as a demo user instead!
+          </div>
           <DemoUser />
         </div>
       </div>

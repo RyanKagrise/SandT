@@ -23,8 +23,8 @@ function DemoUser() {
 
     return (
         <div>
-            <form onSubmit={demoUserLogin}>
-                <button id='' >
+            <form onSubmit={demoUserLogin} className='demo-form'>
+                <button id='' className="demo-button" >
                     Demo User
                 </button>
             </form>

@@ -15,9 +15,12 @@
 .login-button {
   border: 2px grey solid;
   border-radius: 10px;
-  background-color: white;
+  background-color: #383838;
   margin-top: 30px;
+  color: white;
   margin-left: 110px;
+  font-weight: bold;
+  padding: 4px;
 }
 
 .title-login {
