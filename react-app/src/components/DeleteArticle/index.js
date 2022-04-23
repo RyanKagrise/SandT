@@ -38,7 +38,7 @@ const DeleteArticle = () => {
       <button
         type='submit'
         onClick={destroyArticleButton}
-        className='standard-link'
+        className='delete-article'
       >
         Delete Article
       </button>

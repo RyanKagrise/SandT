@@ -52,16 +52,18 @@ const ArticlePage = () => {
     if (sessionUser?.id === comment?.user_id) {
       return (
         <>
-          <NavLink className='standard-link' exact to={`/articles/${article.id}/comments/${comment.id}/edit`}>
-            Edit
-          </NavLink>
-          <button
-            type='submit'
-            onClick={(e) => destroyComment(e, comment)}
-            className='PLACEHOLDER'
-          >
-            Delete
-          </button>
+          <div className='comment-buttons-div'>
+            <NavLink className='edit-comment' exact to={`/articles/${article.id}/comments/${comment.id}/edit`}>
+              Edit
+            </NavLink>
+            <button
+              type='submit'
+              onClick={(e) => destroyComment(e, comment)}
+              className='edit-comment'
+            >
+              Delete
+            </button>
+          </div>
         </>
       )
     }
@@ -99,11 +101,11 @@ const ArticlePage = () => {
             {article ? <img className='' src={article?.image} alt='' /> : null}
             <p className=''>{article?.content}</p>
             <p className=''>Category: {article?.category}</p>
-            <p className=''>Created At: {article?.created_at}</p>
+            {/* <p className=''>Created At: {article?.created_at}</p> */}
           </div>
         </div>
         <div className='edit-delete-buttons'>
-          <NavLink className='standard-link' exact to={`/articles/${article?.id}/edit`}>
+          <NavLink className='edit-comment' exact to={`/articles/${article?.id}/edit`}>
             Edit Article
           </NavLink>
           <DeleteArticle />
@@ -137,11 +139,11 @@ const ArticlePage = () => {
             {article ? <img className='' src={article?.image} alt='' /> : null}
             <p className=''>{article?.content}</p>
             <p className=''>Category: {article?.category}</p>
-            <p className=''>Created At: {article?.created_at}</p>
+            {/* <p className=''>Created At: {article?.created_at}</p> */}
           </div>
           <div className='comment-box'>
             {article?.comments?.map((comment) => (
-              <div key={comment.id}>
+              <div key={comment.id} className='comment'>
                 <div>
                   {comment?.content}
                 </div>
@@ -170,11 +172,11 @@ const ArticlePage = () => {
             {article ? <img className='' src={article?.image} alt='' /> : null}
             <p className=''>{article?.content}</p>
             <p className=''>Category: {article?.category}</p>
-            <p className=''>Created At: {article?.created_at}</p>
+            {/* <p className=''>Created At: {article?.created_at}</p> */}
           </div>
           <div className='comment-box'>
             {article?.comments?.map((comment) => (
-              <div key={comment.id}>
+              <div key={comment.id} className='comment'>
                 <div>
                   {comment?.content}
                 </div>
