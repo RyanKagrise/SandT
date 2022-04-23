@@ -53,7 +53,7 @@ def create_article():
     db.session.add(article)
     db.session.flush()
     db.session.commit()
-
+    console.log('articles Routessssssssssssssssssss', article)
     return article.to_dict()
 
   return {'errors': error_handling(form.errors)}, 400

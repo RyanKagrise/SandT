@@ -71,7 +71,7 @@ export const createNewArticle = (article) => async dispatch => {
     },
     body: JSON.stringify(article)
   });
-
+  console.log('new ARticle issssssssssssssssssue', res)
   if(res.ok) {
     const data = await res.json();
     dispatch(createArticle(data));

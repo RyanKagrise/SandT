@@ -22,17 +22,18 @@ const CreateComment = () => {
   const [errorMessages, setErrorMessages] = useState({});
 
   useEffect(() => {
-    const validationErrors = [];
-    if (content.length > 255)
-      return validationErrors.push(
-        "Please limit content to 255 characters or less!"
-      );
-    setErrors(validationErrors);
-    // dispatch(fetchArticle(article_id))
+    setErrors([])
   }, [content]);
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (content.length > 255) {
+      console.log(errors)
+      return setErrors(["Please limit comment content to 255 characters or less!"])
+    }
 
     const newComment = {
       article_id: article_id,

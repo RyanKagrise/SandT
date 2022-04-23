@@ -51,6 +51,7 @@ const CreateArticle = () => {
 
     try{
       createdArticle = await dispatch(createNewArticle(newArticle));
+      console.log('loooook hereerererer', createdArticle)
     } catch (error) {
       console.log(error)
     }
@@ -106,7 +107,7 @@ const CreateArticle = () => {
             <label className='category'>
               <div className='title-caption'>Category</div>
               <select
-                value={category}
+                defaultValue={"Open Water"}
                 onChange={(e) => setCategory(e.target.value)}
               >
                 <option value={"Open Water"}>Open Water</option>

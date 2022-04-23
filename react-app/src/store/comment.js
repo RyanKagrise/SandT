@@ -39,10 +39,8 @@ const deleteComment = id => {
 export const fetchComments = (article_id) => async dispatch => {
   const res = await fetch(`/api/articles/${article_id}/comments/`);
 
-  console.log(res.ok)
   if (res.ok) {
     const comments = await res.json();
-    console.log('COMMENTS IN THUNK', comments)
     dispatch(getComments(comments.comments));
   }
 }
@@ -86,7 +84,6 @@ export const updateComment = (comment) => async dispatch => {
   } else if (res.status < 500) {
     const data = await res.json()
     if (data.errors) {
-      console.log('------------------------------>', data.errors)
       return data.errors;
     }
   } else {
@@ -115,7 +112,6 @@ const commentReducer = (state = {}, action) => {
   switch (action.type) {
     case GET_COMMENTS: {
       const newState = {...state};
-      console.log('THISSSSSSSSSSSSSS', action.comments)
       action.comments.forEach((comment) => {
         newState[comment.id] = comment;
       });
