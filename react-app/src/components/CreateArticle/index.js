@@ -26,7 +26,7 @@ const CreateArticle = () => {
 
   useEffect(() => {
     setErrors([])
-  }, [image, title]);
+  }, [image, title, category]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,6 +37,10 @@ const CreateArticle = () => {
 
     if (title?.length > 40) {
       return setErrors(['Title must be less than 40 characters!'])
+    }
+
+    if (category?.length === 0) {
+      return setErrors(['Must select a category!'])
     }
 
     const newArticle = {
@@ -50,14 +54,14 @@ const CreateArticle = () => {
     let createdArticle;
 
     try {
-      createdArticle = await dispatch(createNewArticle(newArticle));
+      createdArticle = await dispatch(createNewArticle(newArticle)).then(() => history.push('/articles'))
     } catch (error) {
       console.log(error)
     }
-    if (createdArticle) {
-      setErrors([])
-      history.push('/articles');
-    }
+    // if (createdArticle) {
+    //   setErrors([])
+    //   history.push('/articles');
+    // }
   }
 
   return (

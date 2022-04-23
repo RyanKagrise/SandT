@@ -64,7 +64,7 @@ export const fetchArticle = (id) => async dispatch => {
 }
 
 export const createNewArticle = (article) => async dispatch => {
-  const res = await fetch('/api/articles/add/', {
+  const res = await fetch('/api/articles/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
