@@ -15,3 +15,7 @@ a {
 body {
   overflow: scroll;
 }
+
+.validationErrors {
+  color: red;
+}

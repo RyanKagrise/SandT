@@ -19,17 +19,25 @@ const CreateArticle = () => {
   const [errors, setErrors] = useState([]);
   const [errorMessages, setErrorMessages] = useState({});
 
+
+  const allowedImages = (image) => {
+    return (image?.includes('jpg') || image?.includes('jpeg') || image?.includes('png'))
+  }
+
   useEffect(() => {
-    const validationErrors = [];
-    if (title.length > 40)
-      return validationErrors.push(
-        "Please limit titles to be less than 40 characters!"
-      );
-    setErrors(validationErrors);
-  }, [title]);
+    setErrors([])
+    }, [image, title]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!allowedImages(image)) {
+      return setErrors(['Image must be in the following format: .jpg, .jpeg, and/or .png!']);
+      }
+
+    if (title.length > 40) {
+      return setErrors(['Title must be less than 40 characters!'])
+      }
 
     const newArticle = {
       user_id: sessionUser.id,
