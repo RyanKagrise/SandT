@@ -90,7 +90,12 @@ const ArticlePage = () => {
   if (!article) {
     return (
       <>
-        <div> Page Not Found!</div>
+        <div className='page-not-found'>
+          <div className='title-not-found'> Page Not Found!</div>
+          <div className='explanation-not-found'>
+            We apologize but it appears this article does not exist! Please check the url or search our home page for new articles!
+          </div>
+        </div>
       </>
     )
   } if (sessionUser?.id === article?.user_id) {
