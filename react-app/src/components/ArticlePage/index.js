@@ -23,7 +23,7 @@ const ArticlePage = () => {
   // const comments = useSelector((state) => state.article.comments)
 
   const article = useSelector((state) => state.article[articleId]);
- 
+
 
   useEffect(() => {
     dispatch(fetchArticle(articleId));
@@ -84,9 +84,13 @@ const ArticlePage = () => {
   // }
 
 
-
-
-  if (sessionUser?.id === article?.user_id) {
+  if (!article) {
+    return (
+      <>
+        <div> Page Not Found!</div>
+      </>
+    )
+  } if (sessionUser?.id === article?.user_id) {
     return (
       <div className='page-container'>
         <div className=''>
