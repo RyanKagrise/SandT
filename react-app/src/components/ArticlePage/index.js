@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect} from 'react'
+import { useEffect, useState } from 'react'
 import { fetchArticle } from '../../store/article'
 import { fetchComments, removeComment } from '../../store/comment'
 import { useHistory, NavLink } from 'react-router-dom'
@@ -11,7 +11,7 @@ import CreateComment from '../CreateComment'
 import EditComment from '../EditComment'
 import './ArticlePage.css'
 
-const ArticlePage = ({ comment }) => {
+const ArticlePage = () => {
 
   let history = useHistory();
   const dispatch = useDispatch();
@@ -48,42 +48,49 @@ const ArticlePage = ({ comment }) => {
     }
   }
 
-  const deleteComment = (comment) => {
+  const alterComment = (comment) => {
     if (sessionUser?.id === comment?.user_id) {
       return (
-        <button
-          type='submit'
-          onClick={(e) => destroyComment(e, comment)}
-          className='PLACEHOLDER'
-        >
-          delete comment
-        </button>
+        <>
+          <NavLink className='standard-link' exact to={`/articles/${article.id}/comments/${comment.id}/edit`}>
+            Edit
+          </NavLink>
+          <button
+            type='submit'
+            onClick={(e) => destroyComment(e, comment)}
+            className='PLACEHOLDER'
+          >
+            Delete
+          </button>
+        </>
       )
     }
   }
 
-  const showEdit = (comment) => {
-    if (sessionUser?.id === comment?.user_id) {
-      return (
-        <button
-          type='submit'
-          onClick={(e) => editCommentFunc(e, comment)}
-          className='PLACEHOLDER'
-        >
-          edit comment
-        </button>
-      )
-    }
-  }
+  // const showEdit = (comment) => {
+  //   if (sessionUser?.id === comment?.user_id) {
+  //     return (
+  //       <EditModal />
+  //     )
+  //   }
+  // }
 
-  const editCommentFunc = (e, comment) => {
-      return (
-        <EditComment />
-      )
-  }
+  // const editCommentShow = (comment) => {
+  //   if (sessionUser?.id === comment?.user_id) {
+  //     return (
+  //       <EditComment />
+  //     )
+  //   }
+  // }
 
 
-  if (sessionUser?.id === article?.user_id) {
+  if (!article) {
+    return (
+      <>
+        <div> Page Not Found!</div>
+      </>
+    )
+  } if (sessionUser?.id === article?.user_id) {
     return (
       <div className='page-container'>
         <div className=''>
@@ -113,10 +120,7 @@ const ArticlePage = ({ comment }) => {
               <div>
               </div>
               <div>
-                {deleteComment(comment)}
-              </div>
-              <div>
-                {showEdit(comment)}
+                {alterComment(comment)}
               </div>
             </div>
           ))}
@@ -145,7 +149,7 @@ const ArticlePage = ({ comment }) => {
                   {comment?.owner}
                 </div>
                 <div>
-                  {deleteComment(comment)}
+                  {alterComment(comment)}
                 </div>
               </div>
             ))}

@@ -42,9 +42,12 @@ const CreateArticle = () => {
     let createdArticle;
 
     try{
-      createdArticle = await dispatch(createNewArticle(newArticle)).then(() => history.push('/articles'));
+      createdArticle = await dispatch(createNewArticle(newArticle));
     } catch (error) {
       console.log(error)
+    }
+    if(createdArticle) {
+      history.push('/articles');
     }
   }
 
@@ -98,7 +101,6 @@ const CreateArticle = () => {
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
-                <option value="">-- Choose A Certification Level --</option>
                 <option value={"Open Water"}>Open Water</option>
                 <option value={"Advanced"}>Advanced</option>
                 <option value={"Rescue"}>Rescue</option>

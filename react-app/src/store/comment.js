@@ -37,11 +37,13 @@ const deleteComment = id => {
 //thunk
 
 export const fetchComments = (article_id) => async dispatch => {
-  const res = await fetch(`/api/articles/${article_id}/comments`);
+  const res = await fetch(`/api/articles/${article_id}/comments/`);
 
+  console.log(res.ok)
   if (res.ok) {
     const comments = await res.json();
-    dispatch(getComments(article_id, comments.comments));
+    console.log('COMMENTS IN THUNK', comments)
+    dispatch(getComments(comments.comments));
   }
 }
 
@@ -77,13 +79,14 @@ export const updateComment = (comment) => async dispatch => {
     },
     body: JSON.stringify(comment),
   });
-
+  console.log(res.ok)
   if (res.ok) {
     const editedComment = await res.json()
     dispatch(editComment(editedComment))
   } else if (res.status < 500) {
     const data = await res.json()
     if (data.errors) {
+      console.log('------------------------------>', data.errors)
       return data.errors;
     }
   } else {
@@ -109,9 +112,10 @@ export const removeComment = (comment) => async dispatch => {
 
 //reducer
 const commentReducer = (state = {}, action) => {
-  switch (action.types) {
+  switch (action.type) {
     case GET_COMMENTS: {
-      const newState = {};
+      const newState = {...state};
+      console.log('THISSSSSSSSSSSSSS', action.comments)
       action.comments.forEach((comment) => {
         newState[comment.id] = comment;
       });
