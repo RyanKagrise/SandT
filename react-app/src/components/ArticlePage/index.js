@@ -95,44 +95,44 @@ const ArticlePage = () => {
     )
   } if (sessionUser?.id === article?.user_id) {
     return (
-      <div className='page-container'>
-        <div className=''>
-          <div className='article-container'>
-            <h2 className=''>{article?.title}</h2>
-            {article ? <img className='' src={article?.image} alt='' /> : null}
-            <p className=''>{article?.content}</p>
-            <p className=''>Category: {article?.category}</p>
-            {/* <p className=''>Created At: {article?.created_at}</p> */}
-          </div>
-        </div>
-        <div className='edit-delete-buttons'>
-          <NavLink className='edit-comment' exact to={`/articles/${article?.id}/edit`}>
-            Edit Article
-          </NavLink>
-          <DeleteArticle />
-        </div>
-        <div className='comment-box'>
-          {article?.comments?.map((comment) => (
-            <div key={comment.id} className='comment'>
-              <div>
-                {comment?.content}
-              </div>
-              <div>
-                {comment?.owner}
-              </div>
-              <div>
-              </div>
-              <div>
-                {alterComment(comment)}
-              </div>
+      <>
+        <div className='page-container'>
+          <div className=''>
+            <div className='article-container'>
+              <h2 className=''>{article?.title}</h2>
+              {article ? <img className='article-image' src={article?.image} alt='' /> : null}
+              <p className=''>{article?.content}</p>
+              <p className=''>Category: {article?.category}</p>
+              {/* <p className=''>Created At: {article?.created_at}</p> */}
             </div>
-          ))}
+          </div>
+          <div className='edit-delete-buttons'>
+            <NavLink className='edit-comment' exact to={`/articles/${article?.id}/edit`}>
+              Edit Article
+            </NavLink>
+            <DeleteArticle />
+          </div>
+          <div className='comment-box'>
+            {article?.comments?.map((comment) => (
+              <div key={comment.id} className='comment'>
+                <div>
+                  {comment?.content}
+                </div>
+                <div>
+                  {comment?.owner}
+                </div>
+                <div>
+                </div>
+                <div>
+                  {alterComment(comment)}
+                </div>
+              </div>
+            ))}
+          </div>
+          <CreateComment />
         </div>
-        <CreateComment />
-        <div>
-          <Footer />
-        </div>
-      </div>
+        <Footer />
+      </>
     )
   } if (sessionUser) {
     return (
@@ -140,7 +140,7 @@ const ArticlePage = () => {
         <div className='page-container'>
           <div className='article-container'>
             <h2 className=''>{article?.title}</h2>
-            {article ? <img className='' src={article?.image} alt='' /> : null}
+            {article ? <img className='article-image' src={article?.image} alt='' /> : null}
             <p className=''>{article?.content}</p>
             <p className=''>Category: {article?.category}</p>
             {/* <p className=''>Created At: {article?.created_at}</p> */}
@@ -165,6 +165,7 @@ const ArticlePage = () => {
           </div>
           <CreateComment />
         </div>
+        <Footer />
       </>
     )
   } else {
@@ -173,7 +174,7 @@ const ArticlePage = () => {
         <div className='page-container'>
           <div className='article-container'>
             <h2 className=''>{article?.title}</h2>
-            {article ? <img className='' src={article?.image} alt='' /> : null}
+            {article ? <img className='article-image' src={article?.image} alt='' /> : null}
             <p className=''>{article?.content}</p>
             <p className=''>Category: {article?.category}</p>
             {/* <p className=''>Created At: {article?.created_at}</p> */}
@@ -194,6 +195,7 @@ const ArticlePage = () => {
 
           </div>
         </div>
+        <Footer />
       </>
     )
   }
