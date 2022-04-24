@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateComment } from '../../store/comment';
 import { fetchArticle } from '../../store/article';
 import { useHistory, useParams } from 'react-router-dom'
+import './EditComment.css'
 
 
 const EditComment = () => {
@@ -21,6 +22,7 @@ const EditComment = () => {
 
   useEffect(() => {
     dispatch(fetchArticle(articleId))
+    setErrors([])
   }, [content, dispatch]);
 
 
@@ -28,6 +30,7 @@ const EditComment = () => {
     e.preventDefault();
 
     if (content.length > 255) {
+      console.log(errors)
       return setErrors(["Please limit content to 255 characters or less!"])
     }
 
@@ -47,9 +50,10 @@ const EditComment = () => {
     //   setErrors(editedComment)
     //   console.log(editedComment)
     // }
-
+    console.log(errors)
 
     if(errors.length === 0) {
+      console.log('is this being hit???????????')
       history.push(`/articles/${articleId}`)
     }
   }
@@ -57,29 +61,30 @@ const EditComment = () => {
 
   return (
     <>
-      <div className=''>
+      <div className='form-container'>
         <div className=''>
-          <div className=''>Edit Comment</div>
+          <div className='edit-caption'>Edit Comment</div>
         </div>
-        <form onSubmit={editComment}>
-          <div>
+        <form onSubmit={editComment} className='form-container'>
+          <div className='validationErrors'>
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))}
           </div>
-          <div className=''>
+          <div className='form-container'>
             <label htmlFor='content'></label>
             <textarea
               name='content'
               placeholder='Edit Comment'
               value={content}
               onChange={(e) => setContent(e.target.value)}
+              className='text-area'
               required
             />
           </div>
           <div className=''>
             <div id=''>
-              <button className='' type='submit'>Submit</button>
+              <button className='create-comment' type='submit'>Submit</button>
             </div>
           </div>
         </form>

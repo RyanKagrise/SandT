@@ -34,7 +34,7 @@ def get_one_article(article_id):
 
 
 # create one article
-@article_routes.route('/add', methods=['POST'])
+@article_routes.route('/', methods=['POST'])
 # @login_required
 def create_article():
 

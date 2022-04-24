@@ -19,17 +19,29 @@ const CreateArticle = () => {
   const [errors, setErrors] = useState([]);
   const [errorMessages, setErrorMessages] = useState({});
 
+
+  const allowedImages = (image) => {
+    return (image?.includes('jpg') || image?.includes('jpeg') || image?.includes('png'))
+  }
+
   useEffect(() => {
-    const validationErrors = [];
-    if (title.length > 40)
-      return validationErrors.push(
-        "Please limit titles to be less than 40 characters!"
-      );
-    setErrors(validationErrors);
-  }, [title]);
+    setErrors([])
+  }, [image, title, category]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!allowedImages(image)) {
+      return setErrors(['Image must be in the following format: .jpg, .jpeg, and/or .png!']);
+    }
+
+    if (title?.length > 40) {
+      return setErrors(['Title must be less than 40 characters!'])
+    }
+
+    if (category?.length === 0) {
+      return setErrors(['Must select a category!'])
+    }
 
     const newArticle = {
       user_id: sessionUser.id,
@@ -41,14 +53,15 @@ const CreateArticle = () => {
 
     let createdArticle;
 
-    try{
-      createdArticle = await dispatch(createNewArticle(newArticle));
+    try {
+      createdArticle = await dispatch(createNewArticle(newArticle)).then(() => history.push('/articles'))
     } catch (error) {
       console.log(error)
     }
-    if(createdArticle) {
-      history.push('/articles');
-    }
+    // if (createdArticle) {
+    //   setErrors([])
+    //   history.push('/articles');
+    // }
   }
 
   return (
@@ -91,16 +104,17 @@ const CreateArticle = () => {
                 placeholder='Enter Article Content'
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
-                required
                 className='text-area'
+                required
               />
             </label>
-            <label className='category'>
+            <label className='category-label'>
               <div className='title-caption'>Category</div>
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
+                <option value="">-- Choose A Certification Level --</option>
                 <option value={"Open Water"}>Open Water</option>
                 <option value={"Advanced"}>Advanced</option>
                 <option value={"Rescue"}>Rescue</option>
