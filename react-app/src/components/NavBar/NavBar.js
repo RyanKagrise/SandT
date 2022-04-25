@@ -15,6 +15,11 @@ const NavBar = () => {
         <div className='nav-list'>
           <div>
             <NavLink className='nav-text' to='/' exact={true} activeClassName='active'>
+              <img className='logo' src='https://previews.123rf.com/images/greatnotions/greatnotions1509/greatnotions150902580/44990041-your-rescue-diver-works-to-save-lives-everyday-show-them-how-much-you-appreciate-their-service-.jpg' onError={(e) => e.target.src = 'https://fh-sites.imgix.net/sites/4921/2016/12/07115947/Dive-030619-1164.jpg'} />
+            </NavLink>
+          </div>
+          <div>
+            <NavLink className='nav-text' to='/' exact={true} activeClassName='active'>
               Home
             </NavLink>
           </div>
@@ -54,6 +59,11 @@ const NavBar = () => {
     return (
       <nav className='container'>
         <div className='nav-list'>
+          <div>
+            <NavLink className='nav-text' to='/sign-up' exact={true} activeClassName='active'>
+              <img className='logo' src='https://previews.123rf.com/images/greatnotions/greatnotions1509/greatnotions150902580/44990041-your-rescue-diver-works-to-save-lives-everyday-show-them-how-much-you-appreciate-their-service-.jpg' />
+            </NavLink>
+          </div>
           <div>
             <NavLink className='nav-text' to='/' exact={true} activeClassName='active'>
               Home
