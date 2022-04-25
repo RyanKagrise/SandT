@@ -27,3 +27,9 @@ nav {
   color: white;
   text-decoration: none;
 }
+
+.logo {
+  height: 25px;
+  width: 25px;
+  object-fit: cover;
+}
