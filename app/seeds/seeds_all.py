@@ -64,49 +64,49 @@ def seed_all():
        article_id=2, user_id=3, content='I would agree with the author! Great tips guys!')
 
     comment6 = Comment(
-       article_id=2, user_id=2, content='')
+       article_id=2, user_id=2, content='Understanding the conditions is a pivotal part of the experience! Great advice!')
 
     comment7 = Comment(
-       article_id=3, user_id=1, content='')
+       article_id=3, user_id=1, content='Awesome piece! Love the insight!')
 
     comment8 = Comment(
-       article_id=3, user_id=2, content='')
+       article_id=3, user_id=2, content='I really love how you framed this concept. Keep up the good work!')
 
     comment9 = Comment(
-       article_id=3, user_id=3, content='')
+       article_id=3, user_id=3, content='Does anyone know of any additional resources I should check out along these lines?')
 
     comment10 = Comment(
-       article_id=4, user_id=3, content='')
+       article_id=4, user_id=3, content='Great piece!')
 
     comment11 = Comment(
-       article_id=4, user_id=2, content='')
+       article_id=4, user_id=2, content='This is an essential piece a lot of people do not realize!')
 
     comment12 = Comment(
-       article_id=4, user_id=1, content='')
+       article_id=4, user_id=1, content='I wonder if my dive buddy knows he has been doing it all wrong lol')
 
     comment13 = Comment(
-       article_id=4, user_id= 2, content='')
+       article_id=4, user_id= 2, content='Thanks for the helpful tidbits!')
 
     comment14 = Comment(
-       article_id=5, user_id=2, content='')
+       article_id=5, user_id=2, content='I have actually experienced this before! Glad to see awareness is being brought forward!')
 
     comment15 = Comment(
-       article_id=5, user_id=1, content='')
+       article_id=5, user_id=1, content='I had something similar happen in Aruba, thank god I knew what to do!')
 
     comment16 = Comment(
-       article_id=5, user_id=3, content='')
+       article_id=5, user_id=3, content='Crazy to me that some ppl still do not do these basic safety steps...')
 
     comment17 = Comment(
-       article_id=6, user_id=1, content='')
+       article_id=6, user_id=1, content='As a new diver this piece was very helpful!')
 
     comment18 = Comment(
-       article_id=6, user_id=2, content='')
+       article_id=6, user_id=2, content='I need to get a refresher and get back in the water!')
 
     comment19 = Comment(
-       article_id=7, user_id=3, content='')
+       article_id=7, user_id=3, content='I amm gonna send this article to my friends, great informational article!')
 
     comment20 = Comment(
-       article_id=8, user_id=1, content='')
+       article_id=8, user_id=1, content='Great piece!')
 
 
     # users add/commit

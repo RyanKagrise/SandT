@@ -55,14 +55,14 @@ const ArticlePage = () => {
         <>
           <div className='comment-buttons-div'>
             <NavLink className='edit-comment' exact to={`/articles/${article.id}/comments/${comment.id}/edit`}>
-              Edit
+              Edit Comment
             </NavLink>
             <button
               type='submit'
               onClick={(e) => destroyComment(e, comment)}
               className='edit-comment'
             >
-              Delete
+              Delete Comment
             </button>
           </div>
         </>
@@ -70,13 +70,26 @@ const ArticlePage = () => {
     }
   }
 
-  // const showEdit = (comment) => {
-  //   if (sessionUser?.id === comment?.user_id) {
-  //     return (
-  //       <EditModal />
-  //     )
-  //   }
-  // }
+  const showComments = (comment) => {
+    if (!comment) {
+      return (
+        <>
+          This is it!
+        </>
+      )
+    } else {
+      return (
+        <div className='comment-box'>
+          <div>
+            {comment?.content}
+          </div>
+          <div>
+            {comment?.owner}
+          </div>
+        </div>
+      )
+    }
+  }
 
   // const editCommentShow = (comment) => {
   //   if (sessionUser?.id === comment?.user_id) {
@@ -117,17 +130,16 @@ const ArticlePage = () => {
             </NavLink>
             <DeleteArticle />
           </div>
-          <div className='comment-box'>
+          <div className=''>
             {article?.comments?.map((comment) => (
               <div key={comment.id} className='comment'>
-                <div>
+                {showComments(comment)}
+                {/* <div>
                   {comment?.content}
                 </div>
                 <div>
                   {comment?.owner}
-                </div>
-                <div>
-                </div>
+                </div> */}
                 <div>
                   {alterComment(comment)}
                 </div>
@@ -150,15 +162,16 @@ const ArticlePage = () => {
             <p className=''>Category: {article?.category}</p>
             {/* <p className=''>Created At: {article?.created_at}</p> */}
           </div>
-          <div className='comment-box'>
+          <div className=''>
             {article?.comments?.map((comment) => (
               <div key={comment.id} className='comment'>
-                <div>
+                {showComments(comment)}
+                {/* <div>
                   {comment?.content}
                 </div>
                 <div>
                   {comment?.owner}
-                </div>
+                </div> */}
                 <div>
                   {alterComment(comment)}
                 </div>
@@ -184,20 +197,12 @@ const ArticlePage = () => {
             <p className=''>Category: {article?.category}</p>
             {/* <p className=''>Created At: {article?.created_at}</p> */}
           </div>
-          <div className='comment-box'>
+          <div className=''>
             {article?.comments?.map((comment) => (
               <div key={comment.id} className='comment'>
-                <div>
-                  {comment?.content}
-                </div>
-                <div>
-                  {comment?.owner}
-                </div>
+                {showComments(comment)}
               </div>
             ))}
-          </div>
-          <div>
-
           </div>
         </div>
         <Footer />
