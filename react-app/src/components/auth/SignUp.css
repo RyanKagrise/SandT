@@ -72,3 +72,20 @@
 .password-label {
   padding-right: 5px;
 }
+
+
+.user-input{
+  margin-left: 50px;
+}
+
+.email-input {
+  margin-left: 89px;
+}
+
+.pass-input {
+  margin-left: 65px;
+}
+
+.repeat-input {
+  margin-left: 19px;
+}
