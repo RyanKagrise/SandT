@@ -17,12 +17,17 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
 
+
+
     if (password !== repeatPassword) {
       setErrors(["Password and Repeat Password Field Must Match!"])
     }
 
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
+      if(data) {
+        setErrors(data)
+      }
     }
   };
 
@@ -101,7 +106,7 @@ const SignUpForm = () => {
             ></input>
           </div>
           <div className='signup-div'>
-            <button className='signup-button'  type='submit'>Sign Up</button>
+            <button className='signup-button' type='submit'>Sign Up</button>
           </div>
         </form>
         <div className='demo-signup'>
