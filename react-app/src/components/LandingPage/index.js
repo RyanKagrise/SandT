@@ -40,7 +40,7 @@ const LandingPage = () => {
                 style={{ textDecoration: "none" }}
               >
                 <h3 className=''>{article?.title}</h3>
-                {article ? <img className='LandingImage' src={article?.image} alt='' /> : null}
+                {article ? <img className='LandingImage' src={article?.image} onError={(e) => e.target.src = 'https://fh-sites.imgix.net/sites/4921/2016/12/07115947/Dive-030619-1164.jpg'} /> : null}
                 {/* <p className=''>Date: {article?.image}</p> */}
                 {/* <div className=''>{article?.content}</div> */}
                 <div className=''>Category: {article?.category}</div>
