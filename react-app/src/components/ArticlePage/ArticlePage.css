@@ -1,6 +1,10 @@
 .comment {
   margin: 10px;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .article-container {
@@ -48,6 +52,9 @@
   border: 2px grey solid;
   border-radius: 10px;
   padding: 20px;
+  width: fit-content;
+  justify-content: center;
+
 }
 
 .article-image {
@@ -98,4 +105,12 @@
   font-family: "Avenir Next", Calibri, Verdana, sans-serif;
   font-size: 40px;
   width: fit-content;
+}
+
+NavLink {
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
 }
