@@ -25,6 +25,11 @@ const EditComment = () => {
     setErrors([])
   }, [content, dispatch]);
 
+  useEffect(() => {
+    if (typeof comment === "undefined") {
+      history.push('/')
+    }
+  }, [content])
 
   const editComment = async (e) => {
     e.preventDefault();

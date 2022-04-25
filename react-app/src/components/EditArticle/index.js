@@ -31,6 +31,11 @@ const EditArticle = () => {
   setErrors([])
   }, [image, title, dispatch]);
 
+  useEffect(() => {
+    if (typeof article === "undefined") {
+      history.push('/')
+    }
+  }, [title, image, content])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
