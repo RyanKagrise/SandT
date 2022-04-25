@@ -27,6 +27,9 @@ const LandingPage = () => {
         <div className='site-title'> Welcome To Scuba & Travel!
         </div>
         <p className='Landing-title'> Check out our newest training articles! </p>
+        <div className='Landing-title-topic'>
+          Login or Sign up to add articles and comments!
+        </div>
         <div className='div-container'>
           <ul className='Landing-Container'>
             {articlesArray.slice(-4).map((article) => (
