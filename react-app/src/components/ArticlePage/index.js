@@ -119,8 +119,8 @@ const ArticlePage = () => {
             <div className='article-container'>
               <h2 className=''>{article?.title}</h2>
               {article ? <img className='article-image' src={article?.image} onError={(e) => e.target.src = 'https://fh-sites.imgix.net/sites/4921/2016/12/07115947/Dive-030619-1164.jpg'} /> : null}
-              <p className=''>{article?.content}</p>
-              <p className=''>Category: {article?.category}</p>
+              <p className='article-content'>{article?.content}</p>
+              <p className='category-style'>Category: {article?.category}</p>
               {/* <p className=''>Created At: {article?.created_at}</p> */}
             </div>
           </div>
@@ -158,8 +158,8 @@ const ArticlePage = () => {
           <div className='article-container'>
             <h2 className=''>{article?.title}</h2>
             {article ? <img className='article-image' src={article?.image} onError={(e) => e.target.src = 'https://fh-sites.imgix.net/sites/4921/2016/12/07115947/Dive-030619-1164.jpg'} /> : null}
-            <p className=''>{article?.content}</p>
-            <p className=''>Category: {article?.category}</p>
+            <p className='article-content'>{article?.content}</p>
+            <p className='category-style'>Category: {article?.category}</p>
             {/* <p className=''>Created At: {article?.created_at}</p> */}
           </div>
           <div className=''>
@@ -193,8 +193,8 @@ const ArticlePage = () => {
           <div className='article-container'>
             <h2 className=''>{article?.title}</h2>
             {article ? <img className='article-image' src={article?.image} onError={(e) => e.target.src = 'https://fh-sites.imgix.net/sites/4921/2016/12/07115947/Dive-030619-1164.jpg'} /> : null}
-            <p className=''>{article?.content}</p>
-            <p className=''>Category: {article?.category}</p>
+            <p className='article-content'>{article?.content}</p>
+            <p className='category-style'>Category: {article?.category}</p>
             {/* <p className=''>Created At: {article?.created_at}</p> */}
           </div>
           <div className=''>
