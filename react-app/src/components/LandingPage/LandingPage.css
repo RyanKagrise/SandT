@@ -20,7 +20,7 @@
   justify-content: space-around;
   height: fit-content;
   border: 5px grey solid;
-  overflow: scroll;
+  /* overflow: scroll; */
   text-align: center;
   margin-top: 50px;
   margin-left: 50px;

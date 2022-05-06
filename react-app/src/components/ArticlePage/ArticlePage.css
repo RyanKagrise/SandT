@@ -18,6 +18,12 @@
   padding: 20px;
 }
 
+.article-content {
+  border: 3px grey solid;
+  padding: 15px;
+  border-radius: 10px;
+}
+
 .page-container {
   display: flex;
   flex-direction: column;
@@ -63,6 +69,7 @@
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 30px;
+  border: 5px grey solid;
 }
 
 .page-not-found {
