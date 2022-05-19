@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { fetchArticles } from '../../store/article';
 import './ArticleList.css'
+import Footer from '../Footer';
 
 const ArticleList = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const ArticleList = () => {
 
   return (
     <>
-      <div className=''>
+      <div>
         <p className='PageTitleArticlesList'> Check out our entire collections of articles below! </p>
         <div className=''>
           <ul className='article-grid'>
@@ -50,6 +51,7 @@ const ArticleList = () => {
           </ul>
         </div>
       </div>
+      <Footer />
     </>
   )
 }
