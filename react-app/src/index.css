@@ -27,3 +27,8 @@ body {
   padding: 10px;
   border-radius: 5px;
 }
+
+.category-ability {
+  border: 2px solid grey;
+  padding: 10px;
+}
