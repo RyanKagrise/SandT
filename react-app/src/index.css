@@ -1,6 +1,7 @@
 /* TODO Add site wide styles */
 body {
   font-family: "Avenir Next", Calibri, Verdana, sans-serif;
+  background-color: #78cafa;
 }
 
 .button {
@@ -26,4 +27,9 @@ body {
   border: 2px solid grey;
   padding: 10px;
   border-radius: 5px;
+}
+
+.category-ability {
+  border: 2px solid grey;
+  padding: 10px;
 }
