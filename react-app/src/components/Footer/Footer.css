@@ -6,7 +6,63 @@
 
 .footer {
   display: flex;
-  justify-content: space-around;
-  width: 1000px;
-  margin-top: 50px;
+  width: 100%;
+  margin-top: 100px;
+  background-color: black;
+  border-radius: 20px;
+  position: absolute;
+  bottom: 0;
+}
+
+.technologies {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 80%;
+  justify-content: space-between;
+  margin: 0px 20px;
+}
+
+.python {
+  color: red;
+}
+
+.react {
+  color: white;
+}
+
+.redux {
+  color: red;
+}
+
+.flask {
+  color: white;
+}
+
+.postgresql {
+  color: red;
+}
+
+.javascript {
+  color: white;
+}
+
+.css {
+  color: red;
+}
+
+.html {
+  color: white;
+}
+
+.footer-text {
+  color: red;
+}
+
+.creator-info {
+  display: flex;
+  flex-direction: row;
+  width: 20%;
+  justify-content: space-between;
+  margin: 10px 20px;
 }
