@@ -121,3 +121,8 @@ NavLink {
 button {
   cursor: pointer;
 }
+
+.new-class-style {
+  border: 2px solid grey;
+  padding: 20px;
+}
