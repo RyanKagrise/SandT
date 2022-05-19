@@ -13,7 +13,10 @@ a {
 }
 
 body {
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: relative;
+  height: 100vh;
 }
 
 .validationErrors {
