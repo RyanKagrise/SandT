@@ -9,8 +9,8 @@
   width: 100%;
   background-color: black;
   border-radius: 20px;
-  position: absolute;
   bottom: 0;
+  margin-top: 200px;
 }
 
 .technologies {
