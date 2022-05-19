@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import DemoUser from '../DemoUser'
 import './LoginForm.css'
 
 const LoginForm = () => {
@@ -63,6 +64,12 @@ const LoginForm = () => {
           </div>
           <button className='login-button' type='submit'>Login</button>
         </form>
+        <div className='demo-signup'>
+          <div className='demo-div'>
+            Try our site out as a demo user instead!
+          </div>
+          <DemoUser />
+        </div>
       </div>
     </>
 
