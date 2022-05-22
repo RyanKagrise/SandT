@@ -2,6 +2,8 @@
   font-weight: 100;
   font-size: 20px;
   padding-top: 10px;
+  padding-bottom: 10px;
+
 }
 
 .footer {
@@ -9,6 +11,7 @@
   width: 100%;
   background-color: black;
   border-radius: 20px;
+  height: 50px;
   bottom: 0;
   margin-top: 200px;
 }
@@ -24,38 +27,48 @@
 
 .python {
   color: red;
+  font-weight: bold;
 }
 
 .react {
   color: white;
+  font-weight: bold;
 }
 
 .redux {
   color: red;
+  font-weight: bold;
 }
 
 .flask {
   color: white;
+  font-weight: bold;
 }
 
 .postgresql {
   color: red;
+  font-weight: bold;
 }
 
 .javascript {
   color: white;
+  font-weight: bold;
 }
 
 .css {
   color: red;
+  font-weight: bold;
 }
 
 .html {
   color: white;
+  font-weight: bold;
 }
 
 .footer-text {
   color: red;
+  font-weight: bold;
+  
 }
 
 .creator-info {
@@ -63,5 +76,7 @@
   flex-direction: row;
   width: 20%;
   justify-content: space-between;
-  margin: 10px 20px;
+  margin: 5px 20px;
+  border-left: 3px white solid;
+  padding-left: 30px;
 }
