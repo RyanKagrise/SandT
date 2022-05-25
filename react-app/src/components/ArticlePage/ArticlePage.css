@@ -19,7 +19,7 @@
 }
 
 .article-content {
-  border: 3px grey solid;
+  border: 3px black solid;
   padding: 15px;
   border-radius: 10px;
 }
@@ -40,7 +40,7 @@
   margin-right: 10px;
   background-color: white;
   color: black;
-  border: 2px grey solid;
+  border: 2px black solid;
   border-radius: 10px;
   padding: 1px 6px;
   text-decoration: none;
@@ -55,7 +55,7 @@
 
 .comment-box {
   margin-top: 10px;
-  border: 2px grey solid;
+  border: 2px black solid;
   border-radius: 10px;
   padding: 20px;
   width: fit-content;
@@ -69,7 +69,7 @@
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 30px;
-  border: 5px grey solid;
+  border: 5px black solid;
 }
 
 .page-not-found {
@@ -89,7 +89,7 @@
   margin-top: 150px;
   background-color: white;
   color: black;
-  border: 4px grey solid;
+  border: 4px black solid;
   border-radius: 10px;
   text-decoration: none;
   font-weight: bold;
@@ -103,7 +103,7 @@
   margin-top: 150px;
   background-color: white;
   color: black;
-  border: 4px grey solid;
+  border: 4px black solid;
   border-radius: 10px;
   padding: 1px 6px;
   text-decoration: none;
@@ -123,6 +123,6 @@ button {
 }
 
 .new-class-style {
-  border: 2px solid grey;
+  border: 2px solid black;
   padding: 20px;
 }
