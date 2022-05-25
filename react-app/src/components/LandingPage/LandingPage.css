@@ -41,6 +41,7 @@
   width: 30px;
   height: 30px;
   object-fit: cover;
+  margin-top: 5px;
 }
 
 .footer {
@@ -69,7 +70,7 @@
 }
 
 .footer-text {
-  font-weight: 100;
+  font-weight: bold;
   font-size: 20px;
   padding-top: 10px;
 }
