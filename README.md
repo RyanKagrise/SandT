@@ -1,6 +1,6 @@
 # Scuba and Travel Capstone
 
-Scuba and Travel is a full stack application that allows users to post training articles, comment on those articles, and read other's posts! Coming soon will be photos and travel destinations!
+Scuba and Travel is a full stack application that allows users to post scuba related articles, comment on those articles, and read other's posts! Coming soon will be photos and travel destinations!
 
 
 ## Technologies Used
