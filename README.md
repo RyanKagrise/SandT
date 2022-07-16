@@ -5,7 +5,7 @@ Scuba and Travel is a full stack application that allows users to post scuba rel
 
 ## Technologies Used
 
-Scuba and Travel was designed using Flask, SQLAlchemy, Docker, Python, React, Redux, and more!
+Scuba and Travel was designed using Flask, SQLAlchemy, Docker, Python, React, Redux, and more! You can sneak a peek at the footer for a comprehensive list!
 
 
 ## Using the Application
